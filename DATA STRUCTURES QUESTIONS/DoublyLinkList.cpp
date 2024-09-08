@@ -77,6 +77,29 @@
 //        cout << "Node with data " << data << " not found.\n";
 //    }
 //
+//    void reverse() {
+//    
+//
+//        Node* curr = head, * prev = nullptr, *forw;
+//
+//        tail = head;
+//        while (curr)
+//        {
+//
+//            forw = curr->next;
+//            curr->next = prev;
+//            curr->prev = forw;
+//            prev = curr;
+//            curr = forw;
+//         
+//        }
+//
+//           
+//        head = prev;
+//    
+//    }
+//
+//
 //    void display() {
 //        if (head == nullptr) {
 //            cout << "List is empty.\n";
@@ -99,7 +122,7 @@
 //int main() {
 //    Doublylinkedlist dll;
 //
-//    // Test case 1: Append elements
+//
 //    dll.append(10);
 //    dll.append(20);
 //    dll.append(30);
@@ -107,27 +130,9 @@
 //    cout << "List after appending elements: ";
 //    dll.display();
 //
-//    // Test case 2: Delete an element in the middle
-//    dll.deletenode(20);
-//    cout << "List after deleting node with data 20: ";
-//    dll.display();
+//    dll.reverse();
+//  
 //
-//    // Test case 3: Delete head element
-//    dll.deletenode(10);
-//    cout << "List after deleting head node with data 10: ";
-//    dll.display();
-//
-//    // Test case 4: Delete tail element
-//    dll.deletenode(40);
-//    cout << "List after deleting tail node with data 40: ";
-//    dll.display();
-//
-//    // Test case 5: Attempt to delete non-existing node
-//    dll.deletenode(50);
-//
-//    // Test case 6: Try deleting from empty list
-//    dll.deletenode(30);
-//    dll.deletenode(30); // Should indicate list is empty
 //    cout << "Final List: ";
 //    dll.display();
 //
