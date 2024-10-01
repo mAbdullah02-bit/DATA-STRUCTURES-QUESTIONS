@@ -56,7 +56,8 @@
 //
 //int main() {
 //    Stack stk1, stk2, stk3;
-//
+//    int minimunmoves = 4*4;
+//    int moves = 0;
 //    // Initialize stack 1 with data
 //    stk1.push(4);
 //    stk1.push(3);
@@ -83,7 +84,9 @@
 //            if (stk1.isempty()) cout << "STack is empty!";
 //            else
 //            {
+//                moves++;
 //                stk1.printStack(1);
+//               
 //                x = stk1.pop();
 //                cout << "Choose stack to enter (2 or 3): ";
 //                cin >> choice;
@@ -107,6 +110,7 @@
 //                    }
 //                }
 //                else {
+//                    stk1.push(x);
 //                    cout << "Invalid choice!\n";
 //                }
 //            }
@@ -116,7 +120,9 @@
 //            if (stk2.isempty())cout << "STack is empty!";
 //            else
 //            {
+//                moves++;
 //            stk2.printStack(2);
+//   
 //            x = stk2.pop();
 //            cout << "Choose stack to enter (1 or 3): ";
 //            cin >> choice;
@@ -140,6 +146,7 @@
 //                }
 //            }
 //            else {
+//                stk2.push(x);
 //                cout << "Invalid choice!\n";
 //            }
 //        }
@@ -149,8 +156,10 @@
 //            if (stk3.isempty())cout << "STack is empty!";
 //            else
 //            {
+//                moves++;
 //
 //            stk3.printStack(3);
+//    
 //            x = stk3.pop();
 //            cout << "Choose stack to enter (1 or 2): ";
 //            cin >> choice;
@@ -174,14 +183,19 @@
 //                }
 //            }
 //            else {
+//                stk3.push(x);
 //                cout << "Invalid choice!\n";
 //            }
 //            }
 //            break;
 //
 //        case 4:
-//          
+//            if (moves <= minimunmoves)
+//            {
 //                cout << "You won!\n";
+//
+//            }
+//            else cout << "YOU LOSE!...\n";
 //           
 //            break;
 //
@@ -194,7 +208,7 @@
 //        stk1.printStack(1);
 //        stk2.printStack(2);
 //        stk3.printStack(3);
-//
+//        cout << "MINIMUM MOVES: " << minimunmoves << "  MOVES : " << moves << endl;
 //        if (c == 30) {
 //            cout << "You lose!\n";
 //        }
