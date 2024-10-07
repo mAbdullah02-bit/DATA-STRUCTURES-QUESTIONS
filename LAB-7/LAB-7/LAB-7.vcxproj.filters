@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="trees_arr.cpp">
+    <ClCompile Include="trees_linkedlist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="q2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Treesfunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
