@@ -129,7 +129,9 @@
   <ItemGroup>
     <ClCompile Include="q2.cpp" />
     <ClCompile Include="Treesfunctions.cpp" />
+    <ClCompile Include="trees_arr.cpp" />
     <ClCompile Include="trees_linkedlist.cpp" />
+    <ClCompile Include="Tree_link.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
