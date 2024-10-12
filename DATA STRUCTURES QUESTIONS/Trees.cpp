@@ -6,10 +6,11 @@ using namespace std;
 class Node {
 public:
 	int data;
-	Node* left,*right;
+	Node* left, * right;
 
-	Node(int d) { right = left = nullptr;
-	data = d;
+	Node(int d) {
+		right = left = nullptr;
+		data = d;
 	}
 };
 
@@ -18,31 +19,31 @@ public:
 
 	Node* root;
 	BinarySearchTree() :root(nullptr) {}
-	void insert(int data){
-		Node *ptr=new Node(data);
-		
-		if (root==nullptr)
+	void insert(int data) {
+		Node* ptr = new Node(data);
+
+		if (root == nullptr)
 		{
 			root = ptr;
 			return;
 		}
 		else
 		{
-		
-			Node* temp=root;
-			while (temp!=nullptr)
+
+			Node* temp = root;
+			while (temp != nullptr)
 			{
 
-				if (temp->data>data)
+				if (temp->data > data)
 				{
 					if (temp->left == nullptr) {
-						temp->left = ptr; 
+						temp->left = ptr;
 						return;
 					}
 					else
 						temp = temp->left;
 				}
-				if (temp->data  < data)
+				if (temp->data < data)
 				{
 					if (temp->right == nullptr) {
 						temp->right = ptr;
@@ -51,7 +52,7 @@ public:
 					else
 						temp = temp->right;
 				}
-				
+
 
 			}
 
@@ -60,13 +61,13 @@ public:
 
 	}
 	bool search(int data) {
-	
+
 		Node* temp = root;
 
 		while (temp != nullptr)
 		{
 
-			if (data>temp->data)
+			if (data > temp->data)
 			{
 				if (temp->right != nullptr)
 					temp = temp->right;
@@ -93,7 +94,7 @@ public:
 
 
 		}
-		
+
 	}
 	void Display() {
 		int ch;
@@ -118,8 +119,8 @@ public:
 			cout << "invalid choice!..\n";
 	}
 	void reverselevelorder(Node* root) {
-		
-			if (root==nullptr)
+
+		if (root == nullptr)
 		{
 			cout << "Tree is empty!...\n";
 			return;
@@ -128,114 +129,114 @@ public:
 		stack<Node*> s;
 		Node* temp = root;
 		q.push(temp);
-			q.push(NULL);
-			
-			while (!q.empty())
-			{
-				Node* temp = q.front();
-				s.push(temp);
-				q.pop();
-				if (temp == NULL) {
-			
-					cout << endl;
-					if (!q.empty())q.push(NULL);
-				}
-				else
-				{
+		q.push(NULL);
 
-					
-					if (temp->left)
-					{
-						q.push(temp->left);
-					}
-					if (temp->right)
-					{
-						q.push(temp->right);
-					}
+		while (!q.empty())
+		{
+			Node* temp = q.front();
+			s.push(temp);
+			q.pop();
+			if (temp == NULL) {
+
+				cout << endl;
+				if (!q.empty())q.push(NULL);
+			}
+			else
+			{
+
+
+				if (temp->left)
+				{
+					q.push(temp->left);
+				}
+				if (temp->right)
+				{
+					q.push(temp->right);
 				}
 			}
+		}
 
-			while (!s.empty())
+		while (!s.empty())
+		{
+			if (s.top() == NULL)
 			{
-				if (s.top()==NULL)
-				{
-					cout << endl;
-					s.pop();
-				}
-				cout<<s.top()->data << " ";
+				cout << endl;
 				s.pop();
 			}
+			cout << s.top()->data << " ";
+			s.pop();
+		}
 	}
 	void levelorder(Node* root) {
-	
-		if (root==nullptr)
+
+		if (root == nullptr)
 		{
 			cout << "Tree is empty!...\n";
 			return;
 		}
 		queue<Node*> q;
 		Node* temp = root;
-		q.push(temp);  
-			q.push(NULL);
+		q.push(temp);
+		q.push(NULL);
 		while (!q.empty())
 		{
 			Node* temp = q.front();
 			q.pop();
 			if (temp == NULL) {
-			cout << endl;
-			if (!q.empty())q.push(NULL);
+				cout << endl;
+				if (!q.empty())q.push(NULL);
 			}
 			else
 			{
 
-			cout << temp->data<<" ";
-			if (temp->left)
-			{
-				q.push(temp->left);
+				cout << temp->data << " ";
+				if (temp->left)
+				{
+					q.push(temp->left);
+				}
+				if (temp->right)
+				{
+					q.push(temp->right);
+				}
 			}
-			if (temp->right)
-			{
-				q.push(temp->right);
-			}
-			}
-			
+
 
 
 		}
-	
-	
+
+
 	}
 	void inorder(Node* root) {
-		
-		if (root!=nullptr)
-		{
-			
 
-		inorder(root->left);
-		cout << root->data<<" ";
-		inorder(root->right);
+		if (root != nullptr)
+		{
+
+
+			inorder(root->left);
+			cout << root->data << " ";
+			inorder(root->right);
 
 		}
 
 	}
 	void preorder(Node* root) {
-		
+
 		if (root != nullptr)
 		{
-			
-		cout << root->data<<" ";            
-		preorder(root->left);
-		preorder(root->right);
+
+			cout << root->data << " ";
+			preorder(root->left);
+			preorder(root->right);
 		}
 
 	}
 	void postorder(Node* root) {
 		if (root != nullptr)
 		{
-			
-		postorder(root->left);
-		postorder(root->right);
-		cout << root->data << " ";
+
+			postorder(root->left);
+			postorder(root->right);
+			cout << root->data << " ";
 		}
 
 
@@ -285,7 +286,7 @@ public:
 
 				}
 
-				else 
+				else
 				{
 
 					Node* temp = findMaxFromLeft(node->left);
@@ -324,7 +325,7 @@ int main() {
 	tree.insert(8);
 	tree.insert(20);
 	tree.Display();
-	tree.deletenode(tree.root ,1);
+	tree.deleteNode(1,tree.root);
 
 	tree.Display();
 	return 0;
