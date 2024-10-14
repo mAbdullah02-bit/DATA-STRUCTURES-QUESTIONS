@@ -18,5 +18,8 @@
     <ClCompile Include="BST-Arraybased.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BST-LinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
