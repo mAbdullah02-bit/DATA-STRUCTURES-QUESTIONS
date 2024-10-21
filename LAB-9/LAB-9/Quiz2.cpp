@@ -176,18 +176,27 @@ public:
         return node;
     }
 
-    int depth(Node* root) {
-        if (root == nullptr) {
+    int depth(Node* P)
+    {
+        if (P == NULL)
             return 0;
+
+        int left = depth(P->left);
+        int right = depth(P->right);
+
+        if (left > right)
+        {
+            int h = 1 + left;
+        return h;
         }
-        int leftDepth = depth(root->left);
-        int rightDepth = depth(root->right);
-        return 1 + max(leftDepth, rightDepth);
+        else
+        {
+            int h = 1 + right;
+        return h;
+        }
+
     }
 
-    int getDepth() {
-        return depth(root);
-    }
 };
 
 int main() {
@@ -215,7 +224,7 @@ int main() {
     count = 0;
     cout << "The Length of tree: " << tree.getlength(tree.getroot(), count) << endl;
 
-    cout << "DEPTH OF TREE: " << tree.getDepth() << endl;
+    cout << "DEPTH OF TREE: " << tree.depth(tree.getroot()) << endl;
 
     cout << "Searching for 7 : ";
     cin >> count;
