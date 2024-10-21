@@ -73,12 +73,12 @@ public:
         }
 
         if (num > root->data)
-            return search2(root->right, num); // Corrected to return the result
+            return search2(root->right, num); 
         else if (num < root->data)
-            return search2(root->left, num); // Corrected to return the result
+            return search2(root->left, num); 
         else {
             cout << "Found with value: " << num << endl;
-            return root; // Return the found node
+            return root;
         }
     }
 
@@ -163,7 +163,7 @@ public:
         if (curr != nullptr) {
             cout << "Subtree of node with value " << data << ": ";
             inorder(curr);
-            cout << endl; // Adding a new line for better output formatting
+            cout << endl; 
         }
         else {
             cout << "Subtree not found for value: " << data << endl;
