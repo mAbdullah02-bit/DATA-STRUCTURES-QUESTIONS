@@ -117,11 +117,13 @@
 //        else if(head->next == nullptr)
 //            return;  
 //        Node* curr = head, * temp = nullptr, * head2 = nullptr;
-//        int i = 2;   curr = curr->next;
+//        int i = 2; 
+//        curr = curr->next;
 //        head2 = head;
 //        while (curr!=nullptr)
 //        {
-//            if (i%2!=0) { temp = curr;
+//            if (i%2!=0) { 
+//                temp = curr;
 //                curr->prev->next = curr->next;
 //                if (curr->next!=nullptr){ curr->next->prev = curr->prev;
 //                    curr = curr->next;
@@ -158,13 +160,13 @@
 //    //list.insertAtEnd(0);
 //
 //    // same as mid paper values
-//    list.insertAtEnd(2);
+//  /*  list.insertAtEnd(2);
 //    list.insertAtEnd(1);
 //    list.insertAtEnd(3);
 //    list.insertAtEnd(5);
 //    list.insertAtEnd(6);
 //    list.insertAtEnd(4);
-//    list.insertAtEnd(7);
+//    list.insertAtEnd(7);*/
 //
 //    // case 2 3 nodes
 //   /*   list.insertAtEnd(1);
