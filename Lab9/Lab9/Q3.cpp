@@ -5,15 +5,11 @@
 //public:
 //    Node* left, * right;
 //    int id, h;
-//    string date, name, title;
 //
-//    Node(int data, const string& date, const string& name, const string& title) {
+//    Node(int data) {
 //        this->id = data;
-//        h = 1; 
+//        h = 1;
 //        left = right = nullptr;
-//        this->date = date;
-//        this->name = name;
-//        this->title = title;
 //    }
 //};
 //
@@ -32,30 +28,27 @@
 //    void inorder(Node* root) {
 //        if (root != nullptr) {
 //            inorder(root->left);
-//            cout << "ID: " << root->id << ", Name: " << root->name << ", Date: " << root->date << ", Title: " << root->title << endl;
+//            cout << "ID: " << root->id << endl;
 //            inorder(root->right);
 //        }
 //    }
 //
-//    Node* insert(Node* root, int id, const string& date, const string& name, const string& title) {
+//    Node* insert(Node* root, int id) {
 //        if (root == nullptr) {
-//            return new Node(id, date, name, title);
+//            return new Node(id);
 //        }
 //        else if (id > root->id) {
-//            root->right = insert(root->right, id, date, name, title);
+//            root->right = insert(root->right, id);
 //        }
 //        else if (id < root->id) {
-//            root->left = insert(root->left, id, date, name, title);
+//            root->left = insert(root->left, id);
 //        }
 //        else {
 //            cout << "Cannot enter duplicates\n";
 //            return root;
 //        }
 //
-//       
 //        root->h = 1 + max(height(root->left), height(root->right));
-//
-//     
 //        return balance(root);
 //    }
 //
@@ -84,19 +77,12 @@
 //            else {
 //                Node* temp = findMaxFromLeft(root->left);
 //                root->id = temp->id;
-//                root->date = temp->date;
-//                root->name = temp->name;
-//                root->title = temp->title;
 //                root->left = deletenode(root->left, temp->id);
 //            }
 //        }
 //
 //        if (root == nullptr) return root;
-//
-//       
 //        root->h = 1 + max(height(root->left), height(root->right));
-//
-//
 //        return balance(root);
 //    }
 //
@@ -108,7 +94,7 @@
 //
 //    int height(Node* root) {
 //        if (root == nullptr) {
-//            return 0; 
+//            return 0;
 //        }
 //        return root->h;
 //    }
@@ -133,7 +119,7 @@
 //        Node* z = y->left;
 //        y->left = x;
 //        x->right = z;
-//      
+//
 //        x->h = 1 + max(height(x->left), height(x->right));
 //        y->h = 1 + max(height(y->left), height(y->right));
 //        return y;
@@ -173,26 +159,44 @@
 //        int balanceFactor = getbalancefactor(node);
 //        return (balanceFactor >= -1 && balanceFactor <= 1) && isAVL(node->left) && isAVL(node->right);
 //    }
+//
+//    
+//    void mergeTrees(Node*& root, Node* other) {
+//        if (other == nullptr) return; 
+//        root = insert(root, other->id);
+//        mergeTrees(root, other->left); 
+//        mergeTrees(root, other->right);
+//    }
 //};
 //
 //int main() {
-//    AvlTree tree;
+//    AvlTree T1, T2;
 //    int id;
-//    string date, name, title;
 //
 //    for (int i = 0; i < 5; ++i) {
-//        cout << "Enter ID, Name, Date, Title: ";
-//        cin >> id >> name >> date >> title;
-//        tree.root = tree.insert(tree.root, id, date, name, title);
-//        tree.inorder();
+//        cout << "Enter Data for T1: ";
+//        cin >> id;
+//        T1.root = T1.insert(T1.root, id);
 //    }
 //
-//    cout << "Enter ID to delete: ";
-//    cin >> id;
-//    tree.root = tree.deletenode(tree.root, id);
-//    tree.inorder();
+//    cout << "Tree T1 (Inorder):" << endl;
+//    T1.inorder();
 //
-//    if (tree.isAVL(tree.root)) {
+//    for (int i = 0; i < 4; ++i) {
+//        cout << "Enter Data for T2: ";
+//        cin >> id;
+//        T2.root = T2.insert(T2.root, id);
+//    }
+//
+//    cout << "Tree T2 (Inorder):" << endl;
+//    T2.inorder();
+//
+//
+//    T1.mergeTrees(T1.root, T2.root);
+//    cout << "Merged Tree T1 (Inorder):" << endl;
+//    T1.inorder();
+//
+//    if (T1.isAVL(T1.root)) {
 //        cout << "The tree is AVL balanced." << endl;
 //    }
 //    else {
