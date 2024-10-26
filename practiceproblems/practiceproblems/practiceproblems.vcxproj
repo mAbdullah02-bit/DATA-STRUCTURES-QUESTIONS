@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3a64f1a7-f55e-4237-b103-41a295a4fd94}</ProjectGuid>
-    <RootNamespace>Lab8</RootNamespace>
+    <ProjectGuid>{a383cf01-ab76-4f1f-a63e-97bea0e3c83c}</ProjectGuid>
+    <RootNamespace>practiceproblems</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,12 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BST-Arraybased.cpp" />
-    <ClCompile Include="BST-LinkedList.cpp" />
-    <ClCompile Include="Mid1task.cpp" />
-    <ClCompile Include="qquiz 2.cpp" />
-    <ClCompile Include="Quiz1.cpp" />
-    <ClCompile Include="quiz4.cpp" />
+    <ClCompile Include="tessting.cpp" />
+    <ClCompile Include="VALIDATE A BST.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

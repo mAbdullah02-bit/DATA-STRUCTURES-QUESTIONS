@@ -1,194 +1,401 @@
-//#include <iostream>
+//#include<iostream>
 //using namespace std;
-//
-//// DoublyLinkedList class with CRUD operations
-//class DoublyLinkedList {
-//private:
-//    // Node structure
-//    struct Node {
-//        int data;
-//        Node* next;
-//        Node* prev; // Pointer to the previous node (for doubly linked list)
-//    };
-//
-//    // Function to create a new node
-//    Node* createNode(int data) {
-//        Node* newNode = new Node();
-//        newNode->data = data;
-//        newNode->next = nullptr;
-//        newNode->prev = nullptr;
-//        return newNode;
-//    }
-//
+//class node {
+//	int data;
+//	int key;
+//	node* pre, * next;
 //public:
-//    Node* head,*tail;  // Head of the list
-//
-//    // Constructor to initialize the head to nullptr
-//    DoublyLinkedList() {
-//        head = nullptr;
-//    }
-//
-//    // Insert at the end (Create operation)
-//    void insertAtEnd(int data) {
-//        Node* newNode = createNode(data);
-//        if (head == nullptr) {
-//            head = newNode;
-//        }
-//        else {
-//            Node* temp = head;
-//            while (temp->next != nullptr) {
-//                temp = temp->next;
-//            }
-//            temp->next = newNode;
-//            newNode->prev = temp;
-//            tail = newNode;// Link the new node with the previous one
-//        }
-//    }
-//
-//    // Display the list (Read operation)
-//    void displayList() {
-//        if (head == nullptr) {
-//            cout << "List is empty" << endl;
-//            return;
-//        }
-//        Node* temp = head;
-//        while (temp != nullptr) {
-//            cout << temp->data << " <-> "; // Use <-> to show the two-way link
-//            temp = temp->next;
-//        }
-//        cout << "NULL" << endl;
-//    }
-//
-//    // Update node data (Update operation)
-//    void updateNode(int oldValue, int newValue) {
-//        Node* temp = head;
-//        while (temp != nullptr) {
-//            if (temp->data == oldValue) {
-//                temp->data = newValue;
-//                cout << "Node updated!" << endl;
-//                return;
-//            }
-//            temp = temp->next;
-//        }
-//        cout << "Node with value " << oldValue << " not found." << endl;
-//    }
-//
-//    // Delete a node by its value (Delete operation)
-//    void deleteNode(int value) {
-//        if (head == nullptr) {
-//            cout << "List is empty." << endl;
-//            return;
-//        }
-//
-//        if (head->data == value) {
-//            Node* temp = head;
-//            head = head->next;
-//            if (head != nullptr) {
-//                head->prev = nullptr;  // Update the new head's prev pointer
-//            }
-//            delete temp;
-//            cout << "Node deleted!" << endl;
-//            return;
-//        }
-//
-//        Node* temp = head;
-//        while (temp != nullptr && temp->data != value) {
-//            temp = temp->next;
-//        }
-//
-//        if (temp == nullptr) {
-//            cout << "Node with value " << value << " not found." << endl;
-//        }
-//        else {
-//            if (temp->next != nullptr) {
-//                temp->next->prev = temp->prev;  // Update the next node's prev pointer
-//            }
-//            if (temp->prev != nullptr) {
-//                temp->prev->next = temp->next;  // Update the previous node's next pointer
-//            }
-//            delete temp;
-//            cout << "Node deleted!" << endl;
-//        }
-//    }
-//
-//   void rearrange(Node* head) {
-//        if (head == nullptr) 
-//            return;  
-//        else if(head->next == nullptr)
-//            return;  
-//        Node* curr = head, * temp = nullptr, * head2 = nullptr;
-//        int i = 2; 
-//        curr = curr->next;
-//        head2 = head;
-//        while (curr!=nullptr)
-//        {
-//            if (i%2!=0) { 
-//                temp = curr;
-//                curr->prev->next = curr->next;
-//                if (curr->next!=nullptr){ curr->next->prev = curr->prev;
-//                    curr = curr->next;
-//                    i++; }
-//                temp->next = head2->next;
-//                head2->next->prev = temp;
-//                head2->next = temp;
-//                temp->prev = head2; head2 = temp; }
-//            i++;
-//            curr = curr->next;
-//        }
-//
-//    }
-//      
+//	node()
+//	{
+//		data = 0; key = 0; pre = NULL; next = NULL;
+//	}
+//	void setdata(int d)
+//	{
+//		data = d;
+//	}
+//	int getdata()
+//	{
+//		return data;
+//	}
+//	void setkey(int key)
+//	{
+//		this->key = key;
+//	}
+//	int getkey()
+//	{
+//		return key;
+//	}
+//	void setpre(node* pr)
+//	{
+//		pre = pr;
+//	}
+//	node* getpre()
+//	{
+//		return pre;
+//	}
+//	void setnext(node* next)
+//	{
+//		this->next = next;
+//	}
+//	node* getnext()
+//	{
+//		return next;
+//	}
 //};
+//class doubly {
+//	node* head;
+//public:
+//	doubly()
+//	{
+//		head = NULL;
+//	}
+//	void insert_at_begin(int data, int key)		//Time complexity = O(1)
+//	{
+//		node* ptr = new node;
+//		ptr->setkey(key);
+//		ptr->setdata(data);
+//		if (head == NULL)
+//		{
+//			head = ptr;
+//			head->setpre(NULL);
+//			head->setnext(NULL);
+//		}
+//		else {
+//			ptr->setpre(NULL);
+//			ptr->setnext(head);
+//			head->setpre(ptr);
+//			head = ptr;
+//		}
+//	}
+//	void insert_in_middle(int data, int key, int key2)			//Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		node* ptr = new node;
+//		ptr->setkey(key);
+//		ptr->setdata(data);
+//		if (head == NULL)
+//		{
+//			head = ptr;
+//			head->setpre(NULL);
+//			head->setnext(NULL);
+//		}
+//		else {
+//			node* temp = head;
+//			while (temp != NULL)
+//			{
 //
-//// Main function to demonstrate the operations
-//int main() {
-//    DoublyLinkedList list;
+//				if (temp->getkey() == key2)
+//				{
+//					if (temp->getnext() != NULL)	//if not the last node
+//					{
+//						ptr->setnext(temp->getnext());
+//						temp->getnext()->setpre(ptr);
+//					}
+//					else
+//					{
+//						ptr->setnext(NULL);
+//					}
 //
-//    // Case 1 more then 10 values
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(20);
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(40);
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(60);
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(20);
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(40);
-//    //list.insertAtEnd(0);
-//    //list.insertAtEnd(60);
-//    //list.insertAtEnd(0);
+//					ptr->setpre(temp);
+//					temp->setnext(ptr);
+//					break;
+//				}
+//				temp = temp->getnext();
+//			}
+//		}
+//		cout << "Key not found\n";
+//	}
+//	void insert_at_end(int data, int key)	//Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		node* ptr = new node;
+//		ptr->setkey(key);
+//		ptr->setdata(data);
+//		if (head == NULL)
+//		{
+//			head = ptr;
+//			head->setpre(NULL);
+//			head->setnext(NULL);
+//		}
+//		else {
+//			node* temp = head;
+//			while (temp->getnext() != NULL)
+//			{
+//				temp = temp->getnext();
+//			}
+//			temp->setnext(ptr);
+//			ptr->setpre(temp);
+//			ptr->setnext(NULL);
+//		}
+//	}
+//	void insertat_end(node* n)	//Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		if (head == NULL)
+//		{
+//			head = n;
+//			head->setpre(NULL);
+//			head->setnext(NULL);
+//		}
+//		else {
+//			node* temp = head;
+//			while (temp->getnext() != NULL)
+//			{
+//				temp = temp->getnext();
+//			}
+//			temp->setnext(n);
+//			n->setpre(temp);
+//			n->setnext(NULL);
+//		}
+//	}
+//	void delte_first_node()	//Time complexity = O(1)
+//	{
+//		if (head == NULL)
+//		{
+//			cout << "Nothing to delete bruhhh\n";
+//			return;
+//		}
+//		if (head->getnext() == NULL)	//in case of only one node
+//		{
+//			head = NULL;
+//			return;
+//		}
+//		head->getnext()->setpre(NULL);
+//		head = head->getnext();
 //
-//    // same as mid paper values
-//  /*  list.insertAtEnd(2);
-//    list.insertAtEnd(1);
-//    list.insertAtEnd(3);
-//    list.insertAtEnd(5);
-//    list.insertAtEnd(6);
-//    list.insertAtEnd(4);
-//    list.insertAtEnd(7);*/
+//	}
+//	void delete_a_node(int key)		//Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		if (head == NULL)
+//		{
+//			cout << "Nothing to delete bruhhh\n";
+//			return;
+//		}
+//		node* temp = head;
+//		if (head->getnext() == NULL)	//in case of only one node
+//		{
+//			head = NULL;
+//			return;
+//		}
+//		if (head->getkey() == key)
+//		{
+//			head = head->getnext();
+//			head->setpre(NULL);
+//			delete temp;
+//			temp = NULL;
+//		}
+//		while (temp != NULL)
+//		{
+//			if (temp->getkey() == key)
+//			{
+//				if (temp->getnext() != NULL)	//if not the last node
+//				{
+//					temp->getnext()->setpre(temp->getpre());
+//				}
+//				temp->getpre()->setnext(temp->getnext());
+//				delete temp;
+//				temp = NULL;
+//				return;
+//			}
+//			temp = temp->getnext();
+//		}
+//	}
+//	void delete_last()
+//	{
+//		if (head == NULL)
+//		{
+//			cout << "Nothing to delete bruhhh\n";
+//			return;
+//		}
+//		node* temp = head;
+//		if (head->getnext() == NULL)	//in case of only one node
+//		{
+//			head = NULL;
+//			return;
+//		}
+//		while (temp->getnext() != NULL)
+//		{
+//			temp = temp->getnext();
+//		}
+//		temp->getpre()->setnext(NULL);
+//		delete temp;
+//		temp = NULL;
+//	}
+//	void search(int data) //Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		if (head == NULL)
+//		{
+//			cout << "Nothing to showw bruhhh\n";
+//			return;
+//		}
+//		else {
+//			node* temp = head;
+//			while (temp->getnext() != NULL)
+//			{
+//				if (temp->getdata() == data)
+//				{
+//					cout << "Key: " << temp->getkey() << " Data: " << temp->getdata() << endl;
+//					return;
+//				}
+//				temp = temp->getnext();
+//			}
+//		}
+//		cout << "No node found with this data: \n";
+//	}
+//	void display()          //Time complexity = O(n) where n equals to number of nodes in list
+//	{
+//		node* temp = head;
+//		while (temp != NULL)
+//		{
+//			cout << "Key: " << temp->getkey() << " Data: " << temp->getdata() << endl;
+//			temp = temp->getnext();
+//		}
 //
-//    // case 2 3 nodes
-//   /*   list.insertAtEnd(1);
-//     list.insertAtEnd(5);
-//     list.insertAtEnd(3);*/
-//   
-// /*    case 3  2  nodes*/
-//     //list.insertAtEnd(1);
-//     //list.insertAtEnd(5);
-//    //  case 4 one node
-// /*   list.insertAtEnd(5);*/
-//    // Read (Display list)
-//    cout << "Initial List: ";
-//    list.displayList();
+//	}
+//	node* gethead() {
+//		return head;
+//	}
+//	void mid1()
+//	{
+//		doubly objodd, objeven;
+//		node* temp_even = head;
+//		node* temp_odd = head;
+//		temp_even = head->getnext();
+//		while (temp_odd->getnext() != NULL && temp_odd->getnext()->getnext() != nullptr) {
+//			objodd.insertat_end(temp_odd);
+//			objeven.insertat_end(temp_even);
+//			temp_odd = temp_odd->getnext()->getnext();
+//			temp_even = temp_even->getnext()->getnext();
+//		}
+//		node* temp = objodd.gethead();
+//		while (temp->getnext() != NULL)
+//		{
+//			temp = temp->getnext();
+//		}
+//		temp->setnext(objeven.gethead());
+//		objodd.display();
+//	}
 //
-//    // Rearrange the list
-//   
-// list.rearrange(list.head);
-//    cout << "After Rearranging: ";
-//    list.displayList();
+//	void mid2() {
+//		doubly objodd, objeven;
+//		node* temp_odd = head;
+//		node* temp_even = head->getnext();
 //
+//		while (temp_odd != nullptr || temp_even != nullptr)
+//		{
+//			if (temp_odd != nullptr)
+//			{
+//				node* next_odd = NULL;
+//				if (temp_odd->getnext() != nullptr) {
+//					next_odd = temp_odd->getnext()->getnext();
+//				}
+//				objodd.insertat_end(new node(*temp_odd));
+//				temp_odd = next_odd;
+//			}
 //
+//			if (temp_even != nullptr)
+//			{
+//				node* next_even = NULL;
+//				if (temp_even->getnext() != nullptr) {
+//					next_even = temp_even->getnext()->getnext();
+//				}
+//				objeven.insertat_end(new node(*temp_even));
+//				temp_even = next_even;
+//			}
+//		}
 //
-//    return 0;
+//		node* temp = objodd.gethead();
+//		while (temp->getnext() != nullptr)
+//		{
+//			temp = temp->getnext();
+//		}
+//
+//		temp->setnext(objeven.gethead());
+//		//if (objeven.gethead() != nullptr)
+//		{
+//			objeven.gethead()->setpre(temp);
+//		}
+//
+//		objodd.display();
+//	}
+//
+//};
+//void input(int& data, int& key)
+//{
+//	cout << "Enter data: ";
+//	cin >> data;
+//	cout << "Enter key: ";
+//	cin >> key;
+//}
+//int main()
+//{
+//	doubly obj;
+//	int data, key, ch;
+//	while (true)
+//	{
+//		cout << "Menu:\n";
+//		cout << "1.Insert node at beginning\n";
+//		cout << "2.Insert node in middle\n";
+//		cout << "3.Insert node at end\n";
+//		cout << "4.Delete first node\n";
+//		cout << "5.Delete node\n";
+//		cout << "6.Delete last node\n";
+//		cout << "7.Display list\n";
+//		cout << "8.Search node\n";
+//		cout << "9.Exit\n";
+//		cout << "Enter your choice: ";
+//		cin >> ch;
+//
+//		if (ch == 1)
+//		{
+//			input(data, key);
+//			obj.insert_at_begin(data, key);
+//		}
+//		else if (ch == 2)
+//		{
+//			input(data, key);
+//			int key2;
+//			cout << "Enter key of the node after which you want to insert: ";
+//			cin >> key2;
+//			obj.insert_in_middle(data, key, key2);
+//		}
+//		else if (ch == 3)
+//		{
+//			input(data, key);
+//			obj.insert_at_end(data, key);
+//		}
+//		else if (ch == 4)
+//		{
+//			obj.delte_first_node();
+//		}
+//		else if (ch == 5)
+//		{
+//			cout << "Enter key to delete: ";
+//			int key2; cin >> key2;
+//			obj.delete_a_node(key2);
+//		}
+//		else if (ch == 6)
+//		{
+//			obj.delete_last();
+//		}
+//		else if (ch == 7)
+//		{
+//			obj.display();
+//		}
+//		else if (ch == 8)
+//		{
+//			cout << "Enter data to search: ";
+//			int d; cin >> d;
+//			obj.search(d);
+//		}
+//		else if (ch == 9)
+//		{
+//			cout << "exititing\n";
+//			break;
+//		}
+//		else if (ch == 10)
+//			obj.mid2();
+//		else {
+//			cout << "Enter valid choice\n";
+//			continue;
+//		}
+//	}
+//	return 0;
 //}
