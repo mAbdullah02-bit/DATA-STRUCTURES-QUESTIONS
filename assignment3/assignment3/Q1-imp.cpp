@@ -1,6 +1,5 @@
+//#include "BSTClasses.h"
 //#include <iostream>
-//#include "BST.h"
-//
 //using namespace std;
 //
 //
@@ -14,21 +13,16 @@
 //    root = nullptr;
 //}
 //
-//
 //void BST::insert(int data) {
 //    Node* ptr = new Node(data);
-//
 //    if (root == nullptr) {
 //        root = ptr;
 //        return;
 //    }
-//
 //    Node* current = root;
 //    Node* parent = nullptr;
-//
 //    while (current != nullptr) {
 //        parent = current;
-//
 //        if (data > current->data) {
 //            current = current->right;
 //        }
@@ -40,7 +34,6 @@
 //            return;
 //        }
 //    }
-//
 //    if (data > parent->data)
 //        parent->right = ptr;
 //    else
@@ -57,7 +50,6 @@
 //        cout << "NOT FOUND\n";
 //        return;
 //    }
-//
 //    if (data > root->data)
 //        search(root->right, data);
 //    else if (data < root->data)
@@ -66,48 +58,6 @@
 //        cout << "Found with value: " << data << endl;
 //    }
 //}
-//
-//
-//void BST::inorder() {
-//    inorder(root);
-//    cout << endl;
-//}
-//
-//void BST::inorder(Node* root) {
-//    if (root != nullptr) {
-//        inorder(root->left);
-//        cout << root->data << " ";
-//        inorder(root->right);
-//    }
-//}
-//
-//void BST::preorder() {
-//    preorder(root);
-//    cout << endl;
-//}
-//
-//void BST::preorder(Node* root) {
-//    if (root != nullptr) {
-//        cout << root->data << " ";
-//        preorder(root->left);
-//        preorder(root->right);
-//    }
-//}
-//
-//
-//void BST::postorder() {
-//    postorder(root);
-//    cout << endl;
-//}
-//
-//void BST::postorder(Node* root) {
-//    if (root != nullptr) {
-//        postorder(root->left);
-//        postorder(root->right);
-//        cout << root->data << " ";
-//    }
-//}
-//
 //
 //
 //void BST::deletenode(int data) {
@@ -142,20 +92,48 @@
 //    }
 //}
 //
+//
 //Node* BST::findMaxFromLeft(Node* node) {
 //    while (node && node->right != nullptr)
 //        node = node->right;
 //    return node;
 //}
 //
-//Node* BST::arraytoBST(int arr[], int start, int end) {
-//    if (start > end) return nullptr;
+//void BST::preorder() {
+//    preorder(root);
+//    cout << endl;
+//}
 //
-//    int mid = (start + end) / 2;
-//    Node* root = new Node(arr[mid]);
+//void BST::preorder(Node* root) {
+//    if (root != nullptr) {
+//        cout << root->data << " ";
+//        preorder(root->left);
+//        preorder(root->right);
+//    }
+//}
 //
-//    root->left = arraytoBST(arr, start, mid - 1);
-//    root->right = arraytoBST(arr, mid + 1, end);
+//void BST::postorder() {
+//    postorder(root);
+//    cout << endl;
+//}
 //
-//    return root;
+//void BST::postorder(Node* root) {
+//    if (root != nullptr) {
+//        postorder(root->left);
+//        postorder(root->right);
+//        cout << root->data << " ";
+//    }
+//}
+//
+//void BST::inorder() {
+//    inorder(root);
+//    cout << endl;
+//}
+//
+//void BST::inorder(Node* root) {
+//    if (root != nullptr) {
+//        inorder(root->left);
+//        cout << root->data << " ";
+//        inorder(root->right);
+//    }
 //}
