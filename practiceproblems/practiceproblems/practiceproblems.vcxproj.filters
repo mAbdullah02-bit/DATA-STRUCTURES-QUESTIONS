@@ -21,5 +21,8 @@
     <ClCompile Include="tessting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="recursive sot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -128,7 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AVL7.h" />
+    <ClCompile Include="AVLq8.h" />
     <ClCompile Include="Q-2.cpp" />
+    <ClCompile Include="Q-8.cpp" />
+    <ClCompile Include="Q-9.cpp" />
     <ClCompile Include="Q1-imp.cpp" />
     <ClCompile Include="Q1.cpp" />
     <ClCompile Include="Q2-imp.cpp" />
@@ -140,6 +143,8 @@
     <ClCompile Include="Q6.cpp" />
     <ClCompile Include="Q7-imp.cpp" />
     <ClCompile Include="Q7.cpp" />
+    <ClCompile Include="Q8.cpp" />
+    <ClCompile Include="q9-IMP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVL.h" />
@@ -147,6 +152,7 @@
     <ClInclude Include="BST.h" />
     <ClInclude Include="BSTclasses.h" />
     <ClInclude Include="BSTq5.h" />
+    <ClInclude Include="bstQ9.H" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

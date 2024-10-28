@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="recursive sot.cpp" />
     <ClCompile Include="tessting.cpp" />
     <ClCompile Include="VALIDATE A BST.cpp" />
   </ItemGroup>

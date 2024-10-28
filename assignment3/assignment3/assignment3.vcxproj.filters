@@ -54,6 +54,21 @@
     <ClCompile Include="AVL7.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="q9-IMP.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q-9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q-8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AVLq8.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q8.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BST.h">
@@ -69,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AVL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bstQ9.H">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
