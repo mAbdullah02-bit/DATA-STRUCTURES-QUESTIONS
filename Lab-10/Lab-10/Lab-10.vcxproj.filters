@@ -18,7 +18,7 @@
     <ClCompile Include="Task.1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TASk2.cpp">
+    <ClCompile Include="TASk3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
