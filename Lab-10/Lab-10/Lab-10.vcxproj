@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{63e3ca7e-7187-4ccd-b7fb-d36266b1999b}</ProjectGuid>
-    <RootNamespace>assignment3</RootNamespace>
+    <ProjectGuid>{74cc3822-4dab-4ec4-84c0-4ebce177c166}</ProjectGuid>
+    <RootNamespace>Lab10</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,35 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AVL7.h" />
-    <ClCompile Include="AVLq8.h" />
-    <ClCompile Include="Q-2.cpp" />
-    <ClCompile Include="Q-8.cpp" />
-    <ClCompile Include="Q-9.cpp" />
-    <ClCompile Include="Q1-imp.cpp" />
-    <ClCompile Include="Q1.cpp" />
-    <ClCompile Include="Q2-imp.cpp" />
-    <ClCompile Include="Q3-imp.cpp" />
-    <ClCompile Include="Q3.cpp" />
-    <ClCompile Include="Q4-imp.cpp" />
-    <ClCompile Include="Q4.cpp" />
-    <ClCompile Include="Q5-imp.cpp" />
-    <ClCompile Include="Q5.cpp" />
-    <ClCompile Include="Q6-imp.cpp" />
-    <ClCompile Include="Q6.cpp" />
-    <ClCompile Include="Q7-imp.cpp" />
-    <ClCompile Include="Q7.cpp" />
-    <ClCompile Include="Q8.cpp" />
-    <ClCompile Include="q9-IMP.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AVL.h" />
-    <ClInclude Include="BST+LL.h" />
-    <ClInclude Include="BST.h" />
-    <ClInclude Include="BSTclasses.h" />
-    <ClInclude Include="BSTq5.h" />
-    <ClInclude Include="bstQ9.H" />
-    <ClInclude Include="headers.h" />
+    <ClCompile Include="Task.1.cpp" />
+    <ClCompile Include="TASk2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -69,6 +69,12 @@
     <ClCompile Include="Q8.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Q3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q3-imp.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BST.h">
@@ -87,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="bstQ9.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

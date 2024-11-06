@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="VALIDATE A BST.cpp">
+    <ClCompile Include="Task.1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tessting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="recursive sot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="queueimp.cpp">
+    <ClCompile Include="TASk2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
