@@ -21,5 +21,11 @@
     <ClCompile Include="TASk3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Task2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Q5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
