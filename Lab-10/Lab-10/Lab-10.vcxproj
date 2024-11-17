@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hunain.cpp" />
     <ClCompile Include="Q4.cpp" />
     <ClCompile Include="Q5.cpp" />
     <ClCompile Include="Task.1.cpp" />
