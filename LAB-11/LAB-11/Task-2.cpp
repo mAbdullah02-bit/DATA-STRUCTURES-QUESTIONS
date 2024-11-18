@@ -1,4 +1,5 @@
 //#include<iostream>
+//#include<queue>
 //using namespace std;
 //class Graph {
 //	int** arr;
@@ -54,17 +55,33 @@
 //			cout << "Added Between Vertex " << n << " and " << m << endl;
 //		}
 //		void display() {
-//			cout << "   0 1 2 3 4 \n\n";
+//
+//			queue<pair<int, int>> q;
+//			cout << "   ";
 //			for (int i = 0; i < vertexsize; i++)
 //			{
-//				cout << i << "  ";
-//				for (int j = 0; j < vertexsize; j++)
-//				{
-//					cout << arr[i][j] << " ";
-//				}
-//				cout << endl;
+//				cout << i << " ";
 //			}
 //			cout << endl;
+//			for (int i = 0; i <vertexsize; i++) {
+//				cout << i << "  ";
+//				for (int j = 0; j < vertexsize; j++) {
+//					cout << arr[i][j] << " ";
+//
+//					if (arr[i][j] == 1 && (directional || i < j)) {
+//						q.push({i, j });
+//					}
+//				}
+//				cout << "\n";
+//			}
+//
+//
+//			cout << "\nEdges in the graph:\n";
+//			while (!q.empty()) {
+//				auto edge = q.front();
+//				q.pop();
+//				cout << edge.first << " -> " << edge.second << endl;
+//			}
 //		}
 //
 //};
