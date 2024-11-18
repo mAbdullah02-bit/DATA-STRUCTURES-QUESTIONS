@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MAMTASK.cpp" />
+    <ClCompile Include="MAMtask2.cpp" />
     <ClCompile Include="Task 3.cpp" />
     <ClCompile Include="Task-1.cpp" />
     <ClCompile Include="Task-2.cpp" />
