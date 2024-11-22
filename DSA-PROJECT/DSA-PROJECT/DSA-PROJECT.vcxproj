@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a383cf01-ab76-4f1f-a63e-97bea0e3c83c}</ProjectGuid>
-    <RootNamespace>practiceproblems</RootNamespace>
+    <ProjectGuid>{058b1462-7b54-417c-b052-722815a50fe9}</ProjectGuid>
+    <RootNamespace>DSAPROJECT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="123.cpp" />
-    <ClCompile Include="4gg.cpp" />
-    <ClCompile Include="q3.cpp" />
-    <ClCompile Include="queueimp.cpp" />
-    <ClCompile Include="recursive sot.cpp" />
-    <ClCompile Include="tessting.cpp" />
-    <ClCompile Include="VALIDATE A BST.cpp" />
+    <ClCompile Include="Stackimp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
