@@ -14,10 +14,13 @@ public:
 bool search(BNode* root,string d) {
 		if (root == nullptr) { return false; }
 		else if (root->username == d)return true;
-		else if (d > root->username) { search(root->right,d); }
-		else if (d < root->username) { search(root->left,d); }
+		else if (d > root->username) {return  search(root->right,d); }
+		else if (d < root->username) { return search(root->left,d); }
 	
 	}
+bool search(string username) {
+	return search(root, username);
+}
 bool insert(BNode* root,string d) {
 	if (root == nullptr) { BNode* ptr = new BNode(d); return true; }
 	else if (d < root->username)

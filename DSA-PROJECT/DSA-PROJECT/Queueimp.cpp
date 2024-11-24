@@ -23,7 +23,7 @@ public:	Queue() { front = rear = nullptr; }
 		  rear = rear->next;
 	  }
 	  bool isempty() { return (front==nullptr); }
-	  string front() { return front->data; }
+	  
 	  string deque() {
 		  if (!isempty())
 		  {

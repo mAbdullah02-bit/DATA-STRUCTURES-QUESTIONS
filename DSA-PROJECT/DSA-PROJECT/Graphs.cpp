@@ -27,6 +27,7 @@ class Graph {
 	BST usernames;
 	int size;
 	string color[10];
+public:
 	Graph() {
 		noofusers = 0;
 		size = 20;
@@ -34,19 +35,25 @@ class Graph {
 			Users[i] = nullptr;
 		}
 	}
-	void addUser(string name,string password,string city,string lastlogin) {
+	bool addUser(string name,string password,string city,string lastlogin) {
 		if (noofusers < size) {
 			if (usernames.insert(name)) {
-			Users[noofusers] = new Node(name,password,city,lastlogin);
-			noofusers++;
+				Users[noofusers] = new Node(name, password, city, lastlogin);
+				noofusers++;
+				return true;
 			}
+			else return false;
 		}
 		else
-		{
+		{// fix this functionality
 			size = size * 2;
 			Node** temp = new Node * [size];
 		}
 		
+	
+	}
+	bool checkvalidity(string username) {
+		return usernames.search(username);
 	
 	}
 	void addfriend(string from ,string to) {
