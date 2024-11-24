@@ -59,9 +59,17 @@ class Graph {
 		Node* newNode = new Node(Users[toindex]->username, Users[toindex]->password, Users[toindex]->city, Users[toindex]->lastlogin);
 		newNode->next = Users[fromindex]->next;
 		Users[fromindex]->next = newNode;
+		Node* newNode1 = new Node(Users[fromindex]->username, Users[fromindex]->password, Users[fromindex]->city, Users[fromindex]->lastlogin);
+		newNode1->next = Users[toindex]->next;
+		Users[toindex]->next = newNode1;
 		cout << "Friend Added Succesfully\n";
-		cout<<"\n\nUser: "<<Users[fromindex]->requests.deque()<<" and User "<< Users[toindex]->requests.deque()<<" You both are now friends\n\n";
+		cout<<"\n\nUser: "<<Users[fromindex]->requests.deque()<<" and User "<< Users[toindex]->requests.deque()<<" are now friends\n\n";
 
+	}
+	void addfriend(string from) {
+		int fromindex = getVertexIndex(from);
+		string to =Users[fromindex]->requests.deque();
+		addfriend(to,from);
 	}
 	void insertfriendrequest(string from, string to) {
 	
