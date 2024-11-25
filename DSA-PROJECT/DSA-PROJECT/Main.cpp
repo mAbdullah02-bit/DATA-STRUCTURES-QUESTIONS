@@ -305,10 +305,11 @@ int main() {
             // Call Messaging function here
             break;
         case 9:
+
             cout << GREEN << "\n[Search Users Functionality]\n" << RESET;
             cout<<BLUE << "ENTER USER NAME TO SEARCH: "<<RESET;
             cin >> temp;
-            if (database.search(temp)) {
+            if (insta.searchuser(temp)/*database.search(temp)*/) {
                 cout << GREEN << "USER with Username "<<temp <<" exists!\n" << RESET;
             }
             else
@@ -320,9 +321,19 @@ int main() {
             // Call Search Users function here
             break;
         case 10:
+            if (loggedin) {
+            
             cout << GREEN << "\n[View Followers List Functionality]\n" << RESET;
             cout << BLUE << "YOUR Current Followers are shown below" << RESET << endl;
             insta.displayfollowers(username);
+            }
+            else
+            {
+                cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
+                cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
+            }
+             
+                
             // Call Followers List function here
             break;
         case 11:

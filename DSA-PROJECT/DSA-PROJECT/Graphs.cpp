@@ -49,6 +49,7 @@ public:
 		if (noofusers < size) {
 			
 				Users[noofusers] = new Node(name, password, city, lastlogin);
+				usernames.insert(name);
 				noofusers++;
 				return true;
 			
@@ -61,6 +62,9 @@ public:
 			
 		
 	
+	}
+	bool searchuser(string name) {
+		return usernames.search(name);
 	}
 	void setnewpassword(string username, string pass) {
 		int index = getVertexIndex(username);
