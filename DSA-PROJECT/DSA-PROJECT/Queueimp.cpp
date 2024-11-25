@@ -7,13 +7,13 @@ public:
 	string from;
 	string to;
 	QNode* next;
-	QNode(string s, string d) { next = nullptr; data = s; from = s; }
+	QNode(string s, string d) { next = nullptr; data = s; to = d; }
 };
 class Queue {
 	QNode* front, * rear;
 public:	Queue() { front = rear = nullptr; }
-	  void enque(string d,string from) {
-		  QNode* ptr = new QNode(d,from);
+	  void enque(string from,string to) {
+		  QNode* ptr = new QNode(from,to);
 		  if (!isempty())
 		  {
 			  front = rear = ptr;
@@ -41,11 +41,13 @@ public:	Queue() { front = rear = nullptr; }
 	  }
 	  void display() {
 		  QNode* temp = front;
+		  int x=0;
 		  while (temp!=nullptr)
 		  {
-			  cout<<"Friend Request From: "<<temp->from<<" to " << temp->data << "\n";
+			  x++;
+			  cout<<"Follower "<<x<<" | " << temp->data << " |   ";
 			  temp = temp->next;
 		  }
-
-	  }
+		  cout << "Follower count" << x << endl;;
+;	  }
 };

@@ -2,6 +2,7 @@
 #include <iomanip> // For formatting
 #include <string>
 #include"Graphs.cpp"
+#include"LinkList.cpp"
 
 #include <ctime> // For time functions
 using namespace std;
@@ -84,9 +85,12 @@ bool isValidUsername(const std::string& username) {
 
 int main() {
     int choice;
-    string username, city, lastLogin, password,to;
+    string username, city, lastLogin, password,to,question,temp;
     Graph insta;
+    Linkedlist database;
     bool loggedin = false;
+    bool check;
+    char ch;
     do {
         displayMenu();
         cin >> choice;
@@ -101,16 +105,18 @@ int main() {
             cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
             cout << BOLD << MAGENTA << "*             SIGN UP PORTAL              *" << RESET << endl;
             cout << BOLD << CYAN << "*******************************************" << RESET << endl;
-            bool check;
+           
             // Input username
             do {
                 cout << "Enter a username: ";
                 cin >> username;
                 
-             check  = insta.checkvalidity(username);
-                if (!isValidUsername(username) && !check)
-                    cout << "Invalid username! Username must be at least 4 characters long, start with a letter, and contain only letters, digits, or underscores.\n";
-            } while (!isValidUsername(username)&& !check);
+                check = database.search(username);
+                if (!isValidUsername(username) )
+                    cout<<RED << "Invalid username!"<<YELLOW <<"Username must be at least 4 characters long, start with a letter, and contain only letters, digits, or underscores.\n"<<RESET;
+                if (check) 
+                    cout << RED << "Username already taken!" << YELLOW << " Username must be Uniques.\n" << RESET;
+            } while (!isValidUsername(username) && !check);
 
             // Input and validate password
             do {
@@ -121,6 +127,8 @@ int main() {
               
             } while (!isStrongPassword(password));
             cin.ignore();
+            cout << BOLD << GREEN << "Enter your security question for password reset: " << RESET;
+            getline(cin, question);
             // Input city
             cout << BOLD << GREEN << "Enter your city: " << RESET;
             getline(cin, city);
@@ -130,6 +138,7 @@ int main() {
             cout << BOLD << GREEN << "Last login time set to: " << lastLogin << RESET << endl;
             
             insta.addUser(username,password,city,lastLogin);
+            database.insertdata(username, password,question);
             loggedin = true;
             // Confirmation message
             cout << BOLD << CYAN << "\n-------------------------------------------" << RESET << endl;
@@ -153,66 +162,134 @@ int main() {
             cout << BOLD << CYAN << "*******************************************" << RESET << endl;
 
             if (!loggedin) {
-                bool check;
+                
 
-                // Input username
-                //do {
-                //    cout << "Enter your username: ";
-                //    cin >> username;
+                 //Input username
+                do {
+                    cout << "Enter your username: ";
+                    cin >> username;
+                    cin.ignore();
+                    // Check if username exists
+                    check = database.search(username);  // Use actual check for username existence
+                    if (check==false) {
+                        cout << "Username does not exist. Please try again.\n";
+                    }
+                } while (!check);
 
-                //    // Check if username exists
-                //    check = insta.checkUsernameExistence(username);  // Use actual check for username existence
-                //    if (!check) {
-                //        cout << "Username does not exist. Please try again.\n";
-                //    }
-                //} while (!check);
-
-                // Input password
-               // do {
+               //  Input password
+                do {
                     cout << "Enter your password: ";
                     cin >> password;
+                    cin.ignore();
 
-                    // Check if password matches the username
-                 //   if (!insta.checkPasswordMatch(username, password)) {
-                   //     cout << "Incorrect password! Please try again.\n";
-                  //  }
-               // } while (!insta.checkPasswordMatch(username, password));
+                   //  Check if password matches the username
+                    if (!database.validate(username, password)) {
+                        cout << "Incorrect password! Please try again.\n";
+                    }
+                } while (!database.validate(username, password));
 
                 // Mark the user as logged in
-                loggedin = true;
 
+                loggedin = true;
+                lastLogin = getCurrentDateTime();
+                insta.setlatestime(username, lastLogin);
+                cout << BOLD << GREEN << "Last login time set to: " << lastLogin << RESET << endl;
                 // Confirmation message
                 cout << BOLD << CYAN << "\n-------------------------------------------" << RESET << endl;
                 cout << BOLD << YELLOW << "Login Successful!" << RESET << endl;
                 cout << BOLD << CYAN << "-------------------------------------------" << RESET << endl;
                 cout << GREEN << "Welcome back, " << username << "! You are now logged in.\n" << RESET;
+                cout << "To Change Password with security question y for yes n for no ";
+                cin >> ch;
+                cin.ignore();
+                if (ch == 'y' || ch == 'Y')
+                {
+                    cout << YELLOW << "Enter your security question: \n" << RESET << endl;
+                    getline(cin, question);
+                    check = database.searchsecurity(username,question);
+                    if (check)
+                    {
+                        do {
+                            cout<<YELLOW << "Create a New strong password: "<<RESET;
+                            cin >> password;
+                            if (!isStrongPassword(password))
+                                cout<<BOLD << "Weak password! Password must be at least 8 characters long and include uppercase, lowercase, digits, and special characters.\n"<<RESET;
+
+                        } while (!isStrongPassword(password));
+                        insta.setnewpassword(username, password);
+                        database.updatepassword(username, password);
+                        cout << GREEN << "PASSWORD UPDATED SUCCEFULLLY\n"<<RESET;
+                    }
+                    else {
+                        cout << RED << "Wrong Question " << RESET << endl;
+                    }
+
+
+                }
+                else if (ch == 'n' || ch == 'N') cout << GREEN << "Proceeding.....  \n" << RESET << endl;
+                else cout << "Invalid input\n";
 
             }
             else {
                 cout << RED << "\n\nALREADY LOGGED IN :(\n" << RESET;
-                cout << YELLOW << "\n\nLOGOUT TO LOG INTO A DIFFERENT ACCOUNT :(\n" << RESET;
+                cout << YELLOW << "\n\nLOGOUT First TO LOGIN TO A DIFFERENT ACCOUNT :(\n" << RESET;
             }
             break;
 
         case 3:
             cout << GREEN << "\n[Log Out Functionality]\n" << RESET;
-           
+            if (loggedin) {
+            cout << "To Confirm Logout press y for yes n for no ";
+            cin >> ch;
+            if (ch == 'y' || ch == 'Y')
+            {
+
             loggedin = false;
-            // Call Log Out function here
+            cout << BOLD << CYAN << "\n-------------------------------------------" << RESET << endl;
+            cout << BOLD << YELLOW << "Logout Successful!" << RESET << endl;
+            cout << BOLD << CYAN << "-------------------------------------------" << RESET << endl;
+            cout << GREEN << "See you soon User " << username << "! You are now logged out.\n" << RESET;
+            }
+            else if (ch == 'n' || ch == 'N') cout << GREEN << "Proceeding.....  \n" << RESET << endl;
+            else cout << "Invalid input\n";
+            }
+            else {
+                cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
+                cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
+            }
+            
             break;
         case 4:
+            if (loggedin) {
             cout << GREEN << "\n[Send Follow Request Functionality]\n" << RESET;
-            cout << "ENTER USERNAME TO SEND REQUEST";
-          
+            cout << "ENTER USERNAME TO SEND REQUEST: ";
             cin >> to;
-       
-            insta.insertfriendrequest(username,to);
+            if (username == to) {
+                cout<<RED << "CANNOT FOLLOW YOURSELF\n" << RESET;
+            }
+            else
+            insta.sendfollowrequest(username,to);
+            }
+            else {
+                cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
+                cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
+            }
             // Call Follow Request function here
             break;
+
         case 5:
+            if (loggedin) {
             cout << GREEN << "\n[Cancel or Accept Requests Functionality]\n" << RESET;
-            insta.displayfriendrequests(username);
-            insta.addfriend(username);
+            cout << BLUE << "YOUR Current Followers" << RESET<<endl;
+            insta.displayfollowers(username);
+            cout<<BLUE << "\n\nENTER THE NAME From Above U WANT TO FOLLOW BACK: "<<RESET;
+            cin >> to;
+            insta.addfollower(username,to);
+            }
+            else {
+                cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
+                cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
+            }
             // Call Cancel/Accept Requests function here
             break;
         case 6:
@@ -229,10 +306,23 @@ int main() {
             break;
         case 9:
             cout << GREEN << "\n[Search Users Functionality]\n" << RESET;
+            cout<<BLUE << "ENTER USER NAME TO SEARCH: "<<RESET;
+            cin >> temp;
+            if (database.search(temp)) {
+                cout << GREEN << "USER with Username "<<temp <<" exists!\n" << RESET;
+            }
+            else
+            {
+                cout << GREEN << "USER with Username " << temp << " does not exist!\n" << RESET;
+            }
+            
+
             // Call Search Users function here
             break;
         case 10:
             cout << GREEN << "\n[View Followers List Functionality]\n" << RESET;
+            cout << BLUE << "YOUR Current Followers are shown below" << RESET << endl;
+            insta.displayfollowers(username);
             // Call Followers List function here
             break;
         case 11:

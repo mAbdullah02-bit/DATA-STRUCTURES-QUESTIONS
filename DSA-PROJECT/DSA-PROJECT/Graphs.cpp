@@ -3,6 +3,16 @@
 #include"Queueimp.cpp"
 #include"BSTimp.cpp"
 #include<queue>
+const string RESET1 = "\033[0m";
+const string RED1 = "\033[31m";
+const string GREEN1 = "\033[32m";
+const string YELLOW1 = "\033[33m";
+const string BLUE1 = "\033[34m";
+const string MAGENTA1 = "\033[35m";
+const string CYAN1 = "\033[36m";
+const string WHITE1 = "\033[37m";
+const string BOLD1 = "\033[1m";
+
 
 using namespace std;
 
@@ -37,26 +47,42 @@ public:
 	}
 	bool addUser(string name,string password,string city,string lastlogin) {
 		if (noofusers < size) {
-			if (usernames.insert(name)) {
+			
 				Users[noofusers] = new Node(name, password, city, lastlogin);
 				noofusers++;
 				return true;
-			}
-			else return false;
+			
 		}
 		else
 		{// fix this functionality
 			size = size * 2;
 			Node** temp = new Node * [size];
 		}
+			
 		
 	
 	}
-	bool checkvalidity(string username) {
-		return usernames.search(username);
-	
+	void setnewpassword(string username, string pass) {
+		int index = getVertexIndex(username);
+
+		if (index == -1) {
+			cout << " User do not exist.\n";
+			return;
+		}
+		Users[index]->password = pass;
+
 	}
-	void addfriend(string from ,string to) {
+	void setlatestime(string username,string time) {
+		int index = getVertexIndex(username);
+
+		if (index == -1) {
+			cout << " User do not exist.\n";
+			return;
+		}
+		Users[index]->lastlogin = time;
+
+	}
+	void addfollower(string from ,string to) {
 		int fromindex = getVertexIndex(from);
 		int toindex = getVertexIndex(to);
 		if (fromindex == -1 || toindex == -1) {
@@ -66,19 +92,12 @@ public:
 		Node* newNode = new Node(Users[toindex]->username, Users[toindex]->password, Users[toindex]->city, Users[toindex]->lastlogin);
 		newNode->next = Users[fromindex]->next;
 		Users[fromindex]->next = newNode;
-		Node* newNode1 = new Node(Users[fromindex]->username, Users[fromindex]->password, Users[fromindex]->city, Users[fromindex]->lastlogin);
-		newNode1->next = Users[toindex]->next;
-		Users[toindex]->next = newNode1;
-		cout << "Friend Added Succesfully\n";
-		cout<<"\n\nUser: "<<Users[fromindex]->requests.deque()<<" and User "<< Users[toindex]->requests.deque()<<" are now friends\n\n";
+		cout<<GREEN1<< "Followed Succesfully\n"<<RESET1;
+		cout<<GREEN1<<"\n\nUser: "<<Users[fromindex]->username<<" ! YOU now follow "<< Users[toindex]->username<<" \n\n"<<RESET1;
 
 	}
-	void addfriend(string from) {
-		int fromindex = getVertexIndex(from);
-		string to =Users[fromindex]->requests.deque();
-		addfriend(to,from);
-	}
-	void insertfriendrequest(string from, string to) {
+
+	void sendfollowrequest(string from, string to) {
 	
 		int toindex = getVertexIndex(to);
 		if ( toindex == -1) {
@@ -86,10 +105,14 @@ public:
 			return;
 		}
 		
-		Users[toindex]->requests.enque(to,from);
+		Users[toindex]->requests.enque(from,to);
+		Users[toindex]->notifications.enque(from,to);
+		addfollower(from,to);
+		
 
 	}
-	void displayfriendrequests(string user) {
+
+	void displayfollowers(string user) {
 		int index = getVertexIndex(user);
 		if (index == -1 ) {
 			cout << "User do not exist.\n";
