@@ -157,17 +157,17 @@ public:
 			return;
 		}
 
-		// Check if a follow request already exists
+		
 		QNode* temp = Users[toindex]->requests.front;
 		while (temp != nullptr) {
-			if (temp->from == from) { // Compare 'from' to the sender in the queue
+			if (temp->from == from) {
 				cout << RED1 << "Follow request already sent!.." << RESET1 << endl;
 				return;
 			}
 			temp = temp->next;
 		}
 
-		// If no duplicate request, enqueue it
+		
 		string str = "Friend Request Received from " + from;
 		Users[toindex]->requests.enque(from, to);
 		Users[toindex]->notifications.enque(str);

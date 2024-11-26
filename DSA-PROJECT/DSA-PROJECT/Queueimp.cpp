@@ -11,7 +11,7 @@ public:
     QNode(string f, string t) : from(f), to(t), next(nullptr) {
         data = f;  
     } QNode(string f) : next(nullptr) {
-        data = f;  // Example data
+        data = f;  
     }
 };
 
