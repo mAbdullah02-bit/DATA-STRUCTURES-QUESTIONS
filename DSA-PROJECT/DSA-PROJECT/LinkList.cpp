@@ -5,7 +5,7 @@ class LNode {
 public:
 	string name,password,security;
 	LNode* next;
-
+	LNode() { next = nullptr; }
 
 };
 class Linkedlist

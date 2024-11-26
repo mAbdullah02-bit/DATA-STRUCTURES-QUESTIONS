@@ -10,6 +10,8 @@ public:
 
     QNode(string f, string t) : from(f), to(t), next(nullptr) {
         data = from;  // Example data
+    } QNode(string f) : next(nullptr) {
+        data = f;  // Example data
     }
 };
 
@@ -33,7 +35,18 @@ public:
         }
         numofitems++;  
     }
+    void enque(string data) {
+        QNode* ptr = new QNode(data);
 
+        if (isEmpty()) {
+            front = rear = ptr;
+        }
+        else {
+            rear->next = ptr;
+            rear = rear->next;
+        }
+        numofitems++;
+    }
     bool isEmpty() {
         return numofitems == 0;
     }
@@ -61,10 +74,10 @@ public:
 
         while (temp != nullptr) {
             x++;
-            cout << "Follower " << x << " | " << temp->data << " |   \n";
+            cout  << x << " | " << temp->data << " |   \n";
             temp = temp->next;
         }
 
-        cout << "\nFollower count: " << x << endl;
+        cout << "\nTOTAL count: " << x << endl;
     }
 };

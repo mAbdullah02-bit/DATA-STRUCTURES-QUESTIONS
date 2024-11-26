@@ -63,6 +63,7 @@ public:
 		
 	
 	}
+
 	bool searchuser(string name) {
 		return usernames.search(name);
 	}
@@ -100,7 +101,40 @@ public:
 		cout<<GREEN1<<"\n\nUser: "<<Users[fromindex]->username<<" ! YOU now follow "<< Users[toindex]->username<<" \n\n"<<RESET1;
 
 	}
+	void addpost(string post, string from) {
+		int fromindex = getVertexIndex(from);
+		
+		if (fromindex == -1 ) {
+			cout << "User do not exist.\n";
+			return;
+		}
+		Users[fromindex]->posts.push(post,from);
+	}
+	void viewfollowerposts(string user) {
+		int index = getVertexIndex(user);
+		if (index == -1) {
+			cout << "User do not exist.\n";
+			return;
+		}
+	Node* temp=	Users[index];
+		temp = temp->next;
+	while (temp!=nullptr)
+	{
+		temp->posts.displayposts();
+		
+		temp = temp->next;
+	}
+	
 
+	}
+	void displayposts(string user) {
+		int index = getVertexIndex(user);
+		if (index == -1) {
+			cout << "User do not exist.\n";
+			return;
+		}
+		Users[index]->posts.displayposts();
+	}
 	void sendfollowrequest(string from, string to) {
 	
 		int toindex = getVertexIndex(to);
@@ -110,12 +144,35 @@ public:
 		}
 		
 		Users[toindex]->requests.enque(from,to);
-		Users[toindex]->notifications.enque(from,to);
+		Users[toindex]->notifications.enque( from, to);
 		addfollower(from,to);
 		
 
 	}
+	void sendMessage(string message,string from, string to) {
 
+		int toindex = getVertexIndex(to);
+		int fromindex = getVertexIndex(from);
+		if (toindex == -1|| fromindex==-1) {
+			cout << "one or both Users do not exist.\n";
+			return;
+		}
+		Users[fromindex]->messages.push(message, from, to);
+		Users[toindex]->messages.push(message,from, to);
+		string str = "Message Recieved from " + from;
+		Users[toindex]->notifications.enque(str);
+
+
+
+	}
+	void displaynotificatios(string user) {
+		int index = getVertexIndex(user);
+		if (index == -1) {
+			cout << "User do not exist.\n";
+			return;
+		}
+		Users[index]->notifications.display();
+	}
 	void displayfollowers(string user) {
 		int index = getVertexIndex(user);
 		if (index == -1 ) {
