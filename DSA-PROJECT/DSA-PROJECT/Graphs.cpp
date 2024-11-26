@@ -87,21 +87,33 @@ public:
 		Users[index]->lastlogin = time;
 
 	}
-	void addfollower(string from ,string to) {
+	void addfollower(string from, string to) {
 		int fromindex = getVertexIndex(from);
 		int toindex = getVertexIndex(to);
+
 		if (fromindex == -1 || toindex == -1) {
 			cout << "One or both Users do not exist.\n";
 			return;
 		}
+
+		Node* temp = Users[fromindex]->next;
+		while (temp != nullptr) {
+			if (temp->username == Users[toindex]->username) {
+				cout << RED1 << "ALREADY FOLLOWING!.." << RESET1 << endl;
+				return; 
+			}
+			temp = temp->next;
+		}
+
+		
 		Node* newNode = new Node(Users[toindex]->username, Users[toindex]->password, Users[toindex]->city, Users[toindex]->lastlogin);
-		Users[fromindex]->followerposts =newNode->posts;
 		newNode->next = Users[fromindex]->next;
 		Users[fromindex]->next = newNode;
-		cout<<GREEN1<< "Followed Succesfully\n"<<RESET1;
-		cout<<GREEN1<<"\n\nUser: "<<Users[fromindex]->username<<" ! YOU now follow "<< Users[toindex]->username<<" \n\n"<<RESET1;
 
+		cout << GREEN1 << "Followed Successfully\n" << RESET1;
+		cout << GREEN1 << "\n\nUser: " << Users[fromindex]->username << " ! YOU now follow " << Users[toindex]->username << " \n\n" << RESET1;
 	}
+
 	void addpost(string post, string from) {
 		int fromindex = getVertexIndex(from);
 		
@@ -117,7 +129,7 @@ public:
 			cout << "User do not exist.\n";
 			return;
 		}
-	Node* temp=	Users[index];
+	Node* temp=	Users[index]->next;
 
 	while (temp!=nullptr)
 	{
@@ -137,20 +149,36 @@ public:
 		Users[index]->posts.displayposts(Users[index]->username);
 	}
 	void sendfollowrequest(string from, string to) {
-	
 		int toindex = getVertexIndex(to);
-		if ( toindex == -1) {
-			cout << "User do not exist.\n";
+		int fromindex = getVertexIndex(from);
+
+		if (toindex == -1) {
+			cout << RED1 << "User does not exist.\n" << RESET1;
 			return;
 		}
-		
-		string str = "Friend Request Recieved from " + from;
-		Users[toindex]->requests.enque(from,to);
-		Users[toindex]->notifications.enque( str);
-		addfollower(from,to);
-		
 
+		// Check if a follow request already exists
+		QNode* temp = Users[toindex]->requests.front;
+		while (temp != nullptr) {
+			if (temp->from == from) { // Compare 'from' to the sender in the queue
+				cout << RED1 << "Follow request already sent!.." << RESET1 << endl;
+				return;
+			}
+			temp = temp->next;
+		}
+
+		// If no duplicate request, enqueue it
+		string str = "Friend Request Received from " + from;
+		Users[toindex]->requests.enque(from, to);
+		Users[toindex]->notifications.enque(str);
+
+		cout << GREEN1 << "Follow request sent successfully.\n" << RESET1;
 	}
+
+
+
+
+
 	void sendMessage(string message,string from, string to) {
 
 		int toindex = getVertexIndex(to);
@@ -177,7 +205,7 @@ public:
 	}
 	void displayfollowers(string user) {
 		int index = getVertexIndex(user);
-		if (index == -1 ) {
+		if (index == -1) {
 			cout << "User do not exist.\n";
 			return;
 		}

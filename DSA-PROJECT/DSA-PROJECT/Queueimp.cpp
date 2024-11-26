@@ -9,18 +9,18 @@ public:
     QNode* next;   // Pointer to the next node
 
     QNode(string f, string t) : from(f), to(t), next(nullptr) {
-        data = from;  // Example data
+        data = f;  
     } QNode(string f) : next(nullptr) {
         data = f;  // Example data
     }
 };
 
 class Queue {
-    QNode* front;  
     QNode* rear;   
     int numofitems;
 
 public:
+    QNode* front;  
     Queue() : front(nullptr), rear(nullptr), numofitems(0) {}
 
     void enque(string from, string to) {

@@ -274,7 +274,7 @@ int main() {
                 cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
                 cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
             }
-            // Call Follow Request function here
+           
             break;
 
         case 5:
