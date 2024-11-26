@@ -55,9 +55,9 @@ public:
         delete temp;          
         return data;
     }
-    void displayposts() {
+    void displayposts(string name) {
         if (top == nullptr) {
-            cout << "NOTHING to display :<( \n";
+            cout << "NO posts from user: "<<name<<endl;
             return;
         }
 

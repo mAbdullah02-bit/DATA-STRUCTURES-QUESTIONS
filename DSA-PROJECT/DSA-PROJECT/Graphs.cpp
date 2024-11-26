@@ -95,6 +95,7 @@ public:
 			return;
 		}
 		Node* newNode = new Node(Users[toindex]->username, Users[toindex]->password, Users[toindex]->city, Users[toindex]->lastlogin);
+		Users[fromindex]->followerposts =newNode->posts;
 		newNode->next = Users[fromindex]->next;
 		Users[fromindex]->next = newNode;
 		cout<<GREEN1<< "Followed Succesfully\n"<<RESET1;
@@ -117,10 +118,10 @@ public:
 			return;
 		}
 	Node* temp=	Users[index];
-		temp = temp->next;
+
 	while (temp!=nullptr)
 	{
-		temp->posts.displayposts();
+		temp->posts.displayposts(temp->username);
 		
 		temp = temp->next;
 	}
@@ -133,7 +134,7 @@ public:
 			cout << "User do not exist.\n";
 			return;
 		}
-		Users[index]->posts.displayposts();
+		Users[index]->posts.displayposts(Users[index]->username);
 	}
 	void sendfollowrequest(string from, string to) {
 	
