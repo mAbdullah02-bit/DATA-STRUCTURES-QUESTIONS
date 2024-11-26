@@ -156,7 +156,7 @@ int main() {
             // Call Sign Up function here
             break;
         case 2:
-            cout << GREEN << "\n[Log In Functionality]\n" << RESET;
+          
             cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
             cout << BOLD << MAGENTA << "*             LOGIN PORTAL                *" << RESET << endl;
             cout << BOLD << CYAN << "*******************************************" << RESET << endl;
@@ -237,7 +237,7 @@ int main() {
             break;
 
         case 3:
-            cout << GREEN << "\n[Log Out Functionality]\n" << RESET;
+            
             if (loggedin) {
                 cout << YELLOW << "To Confirm Logout press y for yes n for no " << RESET;
                 cin >> ch;
@@ -261,7 +261,7 @@ int main() {
             break;
         case 4:
             if (loggedin) {
-                cout << GREEN << "\n[Send Follow Request Functionality]\n" << RESET;
+              
                 cout << "ENTER USERNAME TO SEND REQUEST: ";
                 cin >> to;
                 if (username == to) {
@@ -279,7 +279,7 @@ int main() {
 
         case 5:
             if (loggedin) {
-                cout << GREEN << "\n[Cancel or Accept Requests Functionality]\n" << RESET;
+               
                 cout << BLUE << "YOUR Current Followers" << RESET << endl;
                 insta.displayfollowers(username);
                 cout << BLUE << "\n\nENTER THE NAME From Above U WANT TO FOLLOW BACK: " << RESET;
@@ -293,7 +293,7 @@ int main() {
             // Call Cancel/Accept Requests function here
             break;
         case 6:
-            cout << GREEN << "\n[View Posts (Timeline) Functionality]\n" << RESET;
+           
             if (loggedin) {
                 cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
                 cout << BOLD << MAGENTA << "*           TIMELINE             *" << RESET << endl;
@@ -307,6 +307,7 @@ int main() {
                     getline(cin, temp);
 
                     insta.addpost(temp, username);
+                    cout << GREEN << "posted.....  \n" << RESET << endl;
                 }
                 else if (ch == 'n' || ch == 'N') {
                     cout << GREEN << "Viewing Followers posts.....  \n" << RESET << endl;
@@ -322,7 +323,7 @@ int main() {
             // Call Posts/Timeline function here
             break;
         case 7:
-            cout << GREEN << "\n[View Notifications Functionality]\n" << RESET;
+         
             if (loggedin) {
                 cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
                 cout << BOLD << MAGENTA << "*            NOTIFICATIONS             *" << RESET << endl;
@@ -335,7 +336,7 @@ int main() {
             }
             break;
         case 8:
-            cout << GREEN << "\n[Messaging Functionality]\n" << RESET;
+           
             if (loggedin) {
                 cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
                 cout << BOLD << MAGENTA << "*             INBOX              *" << RESET << endl;
@@ -343,13 +344,14 @@ int main() {
 
                 cout << BLUE << "ENTER USERNAME TO SEND Message: " << RESET;
                 cin >> to;
+                cin.ignore();
                 if (username == to) {
                     cout << RED << "CANNOT Send Message to YOURSELF\n" << RESET;
                 }
                 else {
                     cout << BLUE << "ENTER Message TO deliver to: " << to << RESET << endl;;
                     getline(cin, temp);
-                    cin.ignore();
+             
                     insta.sendMessage(temp, username, to);
                     cout << GREEN << "MESSAGE SENT SUCCESSFULLY!\n" << RESET;
                 }
@@ -364,7 +366,7 @@ int main() {
             break;
         case 9:
 
-            cout << GREEN << "\n[Search Users Functionality]\n" << RESET;
+            
             cout << BLUE << "ENTER USER NAME TO SEARCH: " << RESET;
             cin >> temp;
             if (insta.searchuser(temp)/*database.search(temp)*/) {
@@ -381,7 +383,7 @@ int main() {
         case 10:
             if (loggedin) {
 
-                cout << GREEN << "\n[View Followers List Functionality]\n" << RESET;
+                
                 cout << BLUE << "YOUR Current Followers are shown below" << RESET << endl;
                 insta.displayfollowers(username);
             }
@@ -395,7 +397,7 @@ int main() {
             // Call Followers List function here
             break;
         case 11:
-            cout << GREEN << "\n[View Your Newsfeed Functionality]\n" << RESET;
+            
             if (loggedin) {
                 cout << BOLD << CYAN << "\n*******************************************" << RESET << endl;
                 cout << BOLD << MAGENTA << "*       YOUR  POSTS             *" << RESET << endl;

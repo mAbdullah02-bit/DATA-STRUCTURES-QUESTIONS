@@ -143,8 +143,9 @@ public:
 			return;
 		}
 		
+		string str = "Friend Request Recieved from " + from;
 		Users[toindex]->requests.enque(from,to);
-		Users[toindex]->notifications.enque( from, to);
+		Users[toindex]->notifications.enque( str);
 		addfollower(from,to);
 		
 
@@ -159,7 +160,7 @@ public:
 		}
 		Users[fromindex]->messages.push(message, from, to);
 		Users[toindex]->messages.push(message,from, to);
-		string str = "Message Recieved from " + from;
+		string str = message + " Recieved from " + from;
 		Users[toindex]->notifications.enque(str);
 
 
