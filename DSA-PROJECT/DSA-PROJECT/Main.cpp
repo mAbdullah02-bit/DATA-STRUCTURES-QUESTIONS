@@ -1,13 +1,13 @@
 #include <iostream>
-#include <iomanip> // For formatting
+#include <iomanip>
 #include <string>
 #include"Graphs.cpp"
 #include"LinkList.cpp"
+#include <ctime> 
 
-#include <ctime> // For time functions
 using namespace std;
 
-// ANSI escape codes for colors
+
 const string RESET = "\033[0m";
 const string RED = "\033[31m";
 const string GREEN = "\033[32m";
@@ -20,11 +20,11 @@ const string BOLD = "\033[1m";
 
 
 string getCurrentDateTime() {
-    time_t now = time(0);          // Get the current time
-    tm ltm;                        // Create a tm structure to store the result
-    localtime_s(&ltm, &now);       // Safe conversion to local time
+    time_t now = time(0);          
+    tm ltm;                        
+    localtime_s(&ltm, &now);       
 
-    // Format the date and time as "YYYY-MM-DD HH:MM"
+
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M", &ltm);
     return std::string(buffer);
@@ -95,9 +95,9 @@ int main() {
         displayMenu();
         cin >> choice;
 
-        // Clear screen for a clean menu look after each interaction
+      
 
-        system("cls"); // Use "system('clear')" for Linux/Mac
+        system("cls"); 
         switch (choice) {
         case 1:
             if (!loggedin) {
@@ -106,7 +106,7 @@ int main() {
                 cout << BOLD << MAGENTA << "*             SIGN UP PORTAL              *" << RESET << endl;
                 cout << BOLD << CYAN << "*******************************************" << RESET << endl;
 
-                // Input username
+                
                 do {
                     cout << "Enter a username: ";
                     cin >> username;
@@ -118,7 +118,7 @@ int main() {
                         cout << RED << "Username already taken!" << YELLOW << " Username must be Uniques.\n" << RESET;
                 } while (!isValidUsername(username) && !check);
 
-                // Input and validate password
+               
                 do {
                     cout << "Create a strong password: ";
                     cin >> password;
@@ -129,18 +129,18 @@ int main() {
                 cin.ignore();
                 cout << BOLD << GREEN << "Enter your security question for password reset: " << RESET;
                 getline(cin, question);
-                // Input city
+               
                 cout << BOLD << GREEN << "Enter your city: " << RESET;
                 getline(cin, city);
 
-                // Automatically fetch the current date and time
+                
                 lastLogin = getCurrentDateTime();
                 cout << BOLD << GREEN << "Last login time set to: " << lastLogin << RESET << endl;
 
                 insta.addUser(username, password, city, lastLogin);
                 database.insertdata(username, password, question);
                 loggedin = true;
-                // Confirmation message
+               
                 cout << BOLD << CYAN << "\n-------------------------------------------" << RESET << endl;
                 cout << BOLD << YELLOW << "Sign-Up Successful!" << RESET << endl;
                 cout << BOLD << CYAN << "-------------------------------------------" << RESET << endl;
@@ -153,7 +153,7 @@ int main() {
                 cout << YELLOW << "\n\nLOGOUT TO CREATE NEW Account :(\n" << RESET;
             }
 
-            // Call Sign Up function here
+      
             break;
         case 2:
           
@@ -164,31 +164,31 @@ int main() {
             if (!loggedin) {
 
 
-                //Input username
+               
                 do {
                     cout << "Enter your username: ";
                     cin >> username;
                     cin.ignore();
-                    // Check if username exists
-                    check = database.search(username);  // Use actual check for username existence
+                
+                    check = database.search(username);  
                     if (check == false) {
                         cout << "Username does not exist. Please try again.\n";
                     }
                 } while (!check);
 
-                //  Input password
+              
                 do {
                     cout << "Enter your password: ";
                     cin >> password;
                     cin.ignore();
 
-                    //  Check if password matches the username
+                   
                     if (!database.validate(username, password)) {
                         cout << "Incorrect password! Please try again.\n";
                     }
                 } while (!database.validate(username, password));
 
-                // Mark the user as logged in
+                
 
                 loggedin = true;
                 lastLogin = getCurrentDateTime();
@@ -269,6 +269,7 @@ int main() {
                 }
                 else
                     insta.sendfollowrequest(username, to);
+                insta.addfollower(username, to);
             }
             else {
                 cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
@@ -284,13 +285,14 @@ int main() {
                 insta.displayfollowers(username);
                 cout << BLUE << "\n\nENTER THE NAME From Above U WANT TO FOLLOW BACK: " << RESET;
                 cin >> to;
+                    insta.sendfollowrequest(username, to);
                 insta.addfollower(username, to);
             }
             else {
                 cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
                 cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
             }
-            // Call Cancel/Accept Requests function here
+            
             break;
         case 6:
            
@@ -320,7 +322,7 @@ int main() {
                 cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
             }
 
-            // Call Posts/Timeline function here
+            
             break;
         case 7:
          
@@ -378,7 +380,7 @@ int main() {
             }
 
 
-            // Call Search Users function here
+
             break;
         case 10:
             if (loggedin) {
@@ -394,7 +396,7 @@ int main() {
             }
 
 
-            // Call Followers List function here
+        
             break;
         case 11:
             
@@ -410,7 +412,7 @@ int main() {
                 cout << RED << "\n\Not LOGGED IN :(\n" << RESET;
                 cout << YELLOW << "\n\nLOG INTO A ACCOUNT First:(\n" << RESET;
             }
-            // Call Newsfeed function here
+            
             break;
         case 0:
             cout << CYAN << "\nThank you for using Mini Instagram. Goodbye!\n" << RESET;

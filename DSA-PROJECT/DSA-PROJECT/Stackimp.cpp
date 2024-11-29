@@ -34,8 +34,8 @@ public:
 
     void push(string data, string from, string to) {
         SNode* ptr = new SNode(data, from, to);
-        ptr->next = top; 
-        top = ptr;      
+        ptr->next = top;
+        top = ptr;
     }
 
     void push(string data, string from) {
@@ -49,15 +49,15 @@ public:
             return "";
         }
 
-        string data = top->data; 
-        SNode* temp = top;      
-        top = top->next;         
-        delete temp;          
+        string data = top->data;
+        SNode* temp = top;
+        top = top->next;
+        delete temp;
         return data;
     }
     void displayposts(string name) {
         if (top == nullptr) {
-            cout << "NO posts from user: "<<name<<endl;
+            cout << "NO posts from user: " << name << endl;
             return;
         }
 
@@ -65,11 +65,35 @@ public:
         int x = 0;
         while (temp != nullptr) {
             x++;
-            cout << "Post "<<x <<": " << temp->data << " | From: " << temp->from << endl;
+            cout << "Post " << x << ": " << temp->data << " | From: " << temp->from << endl;
             temp = temp->next;
         }
     }
- 
+    Stack& operator=(const Stack& obj) {
+        if (this == &obj) { 
+            return *this;
+        }
+
+   
+        Stack tempStack;
+        SNode* temp = obj.top;
+
+       
+        while (temp != nullptr) {
+            tempStack.push(temp->data, temp->from, temp->to); 
+            temp = temp->next;
+        }
+
+     
+        temp = tempStack.top;
+        while (temp != nullptr) {
+            push(temp->data, temp->from, temp->to); 
+            temp = temp->next;
+        }
+
+        return *this;
+    }
+
 
     void display() {
         if (top == nullptr) {

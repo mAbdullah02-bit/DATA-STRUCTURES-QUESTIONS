@@ -55,9 +55,18 @@ public:
 			
 		}
 		else
-		{// fix this functionality
-			size = size * 2;
-			Node** temp = new Node * [size];
+		{
+			//size = size * 2;     
+			//Node** temp = new Node * [size]; 
+
+		
+			//for (int i = 0; i < noofusers; i++) {
+			//	temp[i] = Users[i];
+			//}
+
+			//
+			//delete[] Users;
+			////Users = temp;
 		}
 			
 		
@@ -107,6 +116,7 @@ public:
 
 		
 		Node* newNode = new Node(Users[toindex]->username, Users[toindex]->password, Users[toindex]->city, Users[toindex]->lastlogin);
+		newNode->posts = Users[toindex]->posts;
 		newNode->next = Users[fromindex]->next;
 		Users[fromindex]->next = newNode;
 
