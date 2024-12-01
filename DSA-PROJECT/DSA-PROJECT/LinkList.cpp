@@ -13,7 +13,28 @@ class Linkedlist
 public:
 	Linkedlist() : head(nullptr){}
 	
+	void insertdata(string data) {
 
+
+		LNode* ptr = new LNode;
+		ptr->name = data;
+		
+	ptr->next = nullptr;
+		if (head == nullptr)
+		{
+			head = ptr;
+		}
+		else
+		{
+			LNode* curr = head;
+
+			while (curr->next != nullptr)
+				curr = curr->next;
+			curr->next = ptr;
+
+		}
+
+	}
 	void insertdata(string data,string pass,string security) {
 	
 

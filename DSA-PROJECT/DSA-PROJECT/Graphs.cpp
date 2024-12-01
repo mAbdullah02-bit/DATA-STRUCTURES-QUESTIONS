@@ -2,6 +2,7 @@
 #include"Stackimp.cpp"
 #include"Queueimp.cpp"
 #include"BSTimp.cpp"
+#include"Linklist.cpp"
 #include<queue>
 const string RESET1 = "\033[0m";
 const string RED1 = "\033[31m";
@@ -263,6 +264,57 @@ public:
 	}
 
 	
+	void ShowSuggestions(string username) {
+		int startIndex = getVertexIndex(username);
+		if (startIndex == -1) {
+			cout << "User does not exist.\n";
+			return;
+		}
+
+		
+		Linkedlist displayed;
+
+		
+		displayed.insertdata(username);
+		Node* temp = Users[startIndex]->next;
+		while (temp != nullptr) {
+			displayed.insertdata(temp->username); 
+			temp = temp->next;
+		}
+
+		cout << "Friend Suggestions for " << username << ":\n";
+
+		
+		temp = Users[startIndex]->next;
+		bool suggestions = false;
+
+		while (temp != nullptr) {
+			int friendIndex = getVertexIndex(temp->username); 
+			if (friendIndex == -1) {
+				temp = temp->next;
+				continue; 
+			}
+
+			
+			Node* friendTemp = Users[friendIndex]->next;
+			while (friendTemp != nullptr) {
+				if (!displayed.search(friendTemp->username)) {
+					
+					cout << "- " << friendTemp->username << endl;
+					displayed.insertdata(friendTemp->username); 
+					suggestions = true;
+				}
+				friendTemp = friendTemp->next;
+			}
+
+			temp = temp->next;
+		}
+
+	
+		if (!suggestions) {
+			cout << "No friend suggestions available.\n";
+		}
+	}
 
 	
 };

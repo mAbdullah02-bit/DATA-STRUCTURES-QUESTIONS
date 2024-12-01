@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 #include"Graphs.cpp"
-#include"LinkList.cpp"
+
 #include <ctime> 
 
 using namespace std;
@@ -388,6 +388,27 @@ int main() {
                 
                 cout << BLUE << "YOUR Current Followers are shown below" << RESET << endl;
                 insta.displayfollowers(username);
+                cout << YELLOW << "WANT TO SEE Suggestions? (y for yes and n for no): " << RESET;
+                cin >> ch;
+                cin.ignore();
+                if (ch == 'y' || ch == 'Y')
+                {
+                 
+
+                    cout << endl << endl<<CYAN<<"---------------Suggestions!-----------------\n"<<RESET;
+                   insta.ShowSuggestions(username);
+
+                                                    
+
+                    cout << GREEN << "  \n" << RESET << endl;
+                }
+                else if (ch == 'n' || ch == 'N') {
+                    cout << GREEN << "Suree.....  \n" << RESET << endl;
+                    insta.BFS(username);
+                   
+                }
+                else cout << RED << "Invalid input\n" << RESET;
+
             }
             else
             {
