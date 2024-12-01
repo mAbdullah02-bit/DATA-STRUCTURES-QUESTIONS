@@ -11,8 +11,9 @@ public:
 class Linkedlist
 {
 public:
+
 	Linkedlist() : head(nullptr){}
-	
+	bool isempty() { return (head == nullptr); }
 	void insertdata(string data) {
 
 

@@ -264,55 +264,47 @@ public:
 	}
 
 	
-	void ShowSuggestions(string username) {
-		int startIndex = getVertexIndex(username);
+	void ShowMutualFollowers(string username) {
+		int startIndex = getVertexIndex(username); // Get the index of the user
 		if (startIndex == -1) {
 			cout << "User does not exist.\n";
 			return;
 		}
 
-		
-		Linkedlist displayed;
+		// Linked list to track already displayed followers
+		Linkedlist displayed; // A simple linked list to avoid duplicates
 
-		
-		displayed.insertdata(username);
-		Node* temp = Users[startIndex]->next;
-		while (temp != nullptr) {
-			displayed.insertdata(temp->username); 
-			temp = temp->next;
-		}
+		cout << "Mutual Followers of " << username << ":\n";
 
-		cout << "Friend Suggestions for " << username << ":\n";
-
-		
-		temp = Users[startIndex]->next;
-		bool suggestions = false;
-
-		while (temp != nullptr) {
-			int friendIndex = getVertexIndex(temp->username); 
+		// Traverse the user's friends
+		Node* friendNode = Users[startIndex]->next;
+		while (friendNode != nullptr) {
+			int friendIndex = getVertexIndex(friendNode->username); // Get friend's index
 			if (friendIndex == -1) {
-				temp = temp->next;
-				continue; 
+				friendNode = friendNode->next;
+				continue; // Skip invalid friends
 			}
 
-			
-			Node* friendTemp = Users[friendIndex]->next;
-			while (friendTemp != nullptr) {
-				if (!displayed.search(friendTemp->username)) {
-					
-					cout << "- " << friendTemp->username << endl;
-					displayed.insertdata(friendTemp->username); 
-					suggestions = true;
+			cout << "Followers of " << friendNode->username << ":\n";
+
+			// Traverse this friend's followers
+			Node* followerNode = Users[friendIndex]->next;
+			while (followerNode != nullptr) {
+				// Check if the follower is already displayed
+				if (!displayed.search(followerNode->username)) {
+					// Display the follower and add them to the displayed list
+					cout << "- " << followerNode->username << endl;
+					displayed.insertdata(followerNode->username);
 				}
-				friendTemp = friendTemp->next;
+				followerNode = followerNode->next;
 			}
 
-			temp = temp->next;
+			friendNode = friendNode->next;
 		}
 
-	
-		if (!suggestions) {
-			cout << "No friend suggestions available.\n";
+		// If no mutual followers found
+		if (displayed.isempty()) {
+			cout << "No mutual followers found.\n";
 		}
 	}
 

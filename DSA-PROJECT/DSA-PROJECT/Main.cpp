@@ -393,12 +393,53 @@ int main() {
                 cin.ignore();
                 if (ch == 'y' || ch == 'Y')
                 {
-                 
+                  /*  insta.addUser("Alice", "Password1!", "CityA", "2024-11-26 10:00");
+                    insta.addUser("Bob", "Password2@", "CityB", "2024-11-26 10:10");
+                    insta.addUser("Charlie", "Password3#", "CityC", "2024-11-26 10:20");
+                    insta.addUser("David", "Password4$", "CityD", "2024-11-26 10:30");
+                    insta.addUser("Eve", "Password5%", "CityE", "2024-11-26 10:40");
+                    insta.addUser("Frank", "Password6&", "CityF", "2024-11-26 10:50");
+
+
+                    insta.addfollower("Alice", "Bob");
+                    insta.addfollower("Alice", "Charlie");
+
+                    insta.addfollower("Bob", "Alice");
+                    insta.addfollower("Bob", "David");
+
+                    insta.addfollower("Charlie", "Alice");
+                    insta.addfollower("Charlie", "Eve");
+
+                    insta.addfollower("David", "Bob");
+                    insta.addfollower("David", "Frank");
+
+                    insta.addfollower("Eve", "Charlie");
+                    insta.addfollower("Eve", "Frank");
+
+                    insta.addfollower("Frank", "Alice");*/
+
 
                     cout << endl << endl<<CYAN<<"---------------Suggestions!-----------------\n"<<RESET;
-                   insta.ShowSuggestions(username);
+                   insta.ShowMutualFollowers(username);
 
-                                                    
+                  /* cout << "Mutual Followers of Alice:\n";
+                   insta.ShowMutualFollowers("Alice");
+
+                   cout << "\nMutual Followers of Bob:\n";
+                   insta.ShowMutualFollowers("Bob");
+
+                   cout << "\nMutual Followers of Charlie:\n";
+                   insta.ShowMutualFollowers("Charlie");
+
+                   cout << "\nMutual Followers of David:\n";
+                   insta.ShowMutualFollowers("David");
+
+                   cout << "\nMutual Followers of Eve:\n";
+                   insta.ShowMutualFollowers("Eve");*/
+
+
+              
+
 
                     cout << GREEN << "  \n" << RESET << endl;
                 }
