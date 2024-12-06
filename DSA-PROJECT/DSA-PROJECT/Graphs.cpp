@@ -18,7 +18,7 @@ const string BOLD1 = "\033[1m";
 using namespace std;
 
 class Node{
-	//EACH USERs DETAILS 
+	
 public:
 	string username, password, city, lastlogin;
 	// Posts Stack for personal posts, messages stack for recieved messages,
@@ -265,34 +265,34 @@ public:
 
 	
 	void ShowMutualFollowers(string username) {
-		int startIndex = getVertexIndex(username); // Get the index of the user
+		int startIndex = getVertexIndex(username);
 		if (startIndex == -1) {
 			cout << "User does not exist.\n";
 			return;
 		}
 
-		// Linked list to track already displayed followers
-		Linkedlist displayed; // A simple linked list to avoid duplicates
+		
+		Linkedlist displayed; 
 
 		cout << "Mutual Followers of " << username << ":\n";
 
-		// Traverse the user's friends
+	
 		Node* friendNode = Users[startIndex]->next;
 		while (friendNode != nullptr) {
-			int friendIndex = getVertexIndex(friendNode->username); // Get friend's index
+			int friendIndex = getVertexIndex(friendNode->username);
 			if (friendIndex == -1) {
 				friendNode = friendNode->next;
-				continue; // Skip invalid friends
+				continue; 
 			}
 
 			cout << "Followers of " << friendNode->username << ":\n";
 
-			// Traverse this friend's followers
+			
 			Node* followerNode = Users[friendIndex]->next;
 			while (followerNode != nullptr) {
-				// Check if the follower is already displayed
+				
 				if (!displayed.search(followerNode->username)) {
-					// Display the follower and add them to the displayed list
+				
 					cout << "- " << followerNode->username << endl;
 					displayed.insertdata(followerNode->username);
 				}
@@ -302,7 +302,7 @@ public:
 			friendNode = friendNode->next;
 		}
 
-		// If no mutual followers found
+		
 		if (displayed.isempty()) {
 			cout << "No mutual followers found.\n";
 		}

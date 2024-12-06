@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <string>
 #include"Graphs.cpp"
-
 #include <ctime> 
 
 using namespace std;
@@ -37,7 +36,7 @@ void displayMenu() {
     cout << BOLD << MAGENTA << "*                                         *" << RESET << "\n";
     cout << BOLD << MAGENTA << "*             MINI INSTAGRAM              *" << RESET << "\n";
     cout << BOLD << MAGENTA << "*         ~ Social Made Simple ~          *" << RESET << "\n";
-    cout << BOLD << MAGENTA << "*                                         *" << RESET << "\n";
+    cout << BOLD << MAGENTA << "*           ABDULLAH AND QASIM            *" << RESET << "\n";
     cout << BOLD << CYAN << "*******************************************" << RESET << "\n";
     cout << "\n" << BOLD << WHITE << "Choose an option:\n" << RESET;
     cout << YELLOW << "-------------------------------------------" << RESET << "\n";
@@ -57,7 +56,7 @@ void displayMenu() {
     cout << WHITE << "Enter your choice: " << RESET;
 }
 
-bool isStrongPassword(const std::string& password) {
+bool isStrongPassword(string password) {
     if (password.length() < 8)
         return false;
 
@@ -71,7 +70,7 @@ bool isStrongPassword(const std::string& password) {
 
     return hasUpper && hasLower && hasDigit && hasSpecial;
 }
-bool isValidUsername(const std::string& username) {
+bool isValidUsername(string username) {
     if (username.length() < 4 || !isalpha(username[0]))
         return false;
 
@@ -113,10 +112,10 @@ int main() {
 
                     check = database.search(username);
                     if (!isValidUsername(username))
-                        cout << RED << "Invalid username!" << YELLOW << "Username must be at least 4 characters long, start with a letter, and contain only letters, digits, or underscores.\n" << RESET;
+                        cout << RED << "Invalid username!" << YELLOW << "Username must be at leasst 4 characters long, start with a letter, and contain only letters, digits, or underscores.\n" << RESET;
                     if (check)
                         cout << RED << "Username already taken!" << YELLOW << " Username must be Uniques.\n" << RESET;
-                } while (!isValidUsername(username) && !check);
+                } while (!(isValidUsername(username) && !check));
 
                
                 do {

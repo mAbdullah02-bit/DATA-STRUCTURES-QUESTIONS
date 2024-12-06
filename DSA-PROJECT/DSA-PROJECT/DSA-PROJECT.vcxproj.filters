@@ -36,5 +36,8 @@
     <ClCompile Include="LinkList.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Qno3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
