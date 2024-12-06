@@ -131,10 +131,8 @@
     <ClCompile Include="Graphs.cpp" />
     <ClCompile Include="LinkList.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Qno3.cpp" />
     <ClCompile Include="Queueimp.cpp" />
     <ClCompile Include="Stackimp.cpp" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
