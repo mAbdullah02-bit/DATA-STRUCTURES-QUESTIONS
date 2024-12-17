@@ -36,5 +36,8 @@
     <ClCompile Include="q3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="kthdelete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

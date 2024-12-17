@@ -1,159 +1,63 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
-template <typename T>
-struct Node {
-    T fromV;
-    T toV;
-    int weight;
-    Node* next;
-};
-
-template <typename T>
-class Queue {
-private:
-    Node<T>* front;
-    Node<T>* rear;
-
-public:
-    Queue() : front(nullptr), rear(nullptr) {}
-
-    void enqueue(T fromV, T toV, int weight) {
-        Node<T>* n = new Node<T>{ fromV, toV, weight, nullptr };
-        if (rear != nullptr) {
-            rear->next = n;
-        }
-        rear = n;
-        if (front == nullptr) {
-            front = n;
-        }
-    }
-
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Empty queue" << endl;
-            return;
-        }
-        Node<T>* temp = front;
-        cout << temp->fromV << " -> " << temp->toV << ", weight: " << temp->weight << endl;
-        front = front->next;
-        if (front == nullptr) {
-            rear = nullptr;
-        }
-        delete temp;
-    }
-
-    bool isEmpty() {
-        return (front == nullptr);
-    }
-
-    ~Queue() {
-        while (!isEmpty()) {
-            dequeue();
-        }
-    }
-};
-
-template <typename T>
-class Graph {
-private:
-    int** arr;
-    T* vertices;
-    bool directional;
-    int maxVertices;
-    int vertexsize; 
-
-    int findVertexIndex(T vertex) {
-        for (int i = 0; i < vertexsize; i++) {
-            if (vertices[i] == vertex) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-public:
-    Graph(int n, bool isDirectional = false)
-        : maxVertices(n), directional(isDirectional), vertexsize(0) {
-        arr = new int* [n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = new int[n];
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = 0;
-            }
-        }
-        vertices = new T[n];
-    }
-
-    void AddVertex(T vertex) {
-        if (vertexsize < maxVertices) {
-            vertices[vertexsize] = vertex;
-            vertexsize++;
-            cout << "Vertex added: " << vertex << endl;
-        }
-        else {
-            cout << "Vertex limit exceeded!" << endl;
-        }
-    }
-
-    void addedge(T vertex1, T vertex2, int weight = 1) {
-        int index1 = findVertexIndex(vertex1);
-        int index2 = findVertexIndex(vertex2);
-
-        if (index1 == -1 || index2 == -1) {
-            cout << "Invalid vertex: " << vertex1 << " or " << vertex2 << endl;
-            return;
-        }
-
-        arr[index1][index2] = weight;
-        if (!directional) {
-            arr[index2][index1] = weight;
-        }
-        cout << "Edge added between vertex " << vertex1 << " and " << vertex2 << " with weight " << weight << endl;
-    }
-
-    void DisplayGraph() {
-        Queue<T> q;
-        for (int i = 0; i < vertexsize; i++) {
-            for (int j = i + 1; j < vertexsize; j++) {
-                if (arr[i][j] != 0) {
-                    q.enqueue(vertices[i], vertices[j], arr[i][j]);
-                }
-            }
-        }
-
-        cout << "Graph edges and weights:" << endl;
-        while (!q.isEmpty()) {
-            q.dequeue();
-        }
-    }
-
-    ~Graph() {
-        for (int i = 0; i < maxVertices; i++) {
-            delete[] arr[i];
-        }
-        delete[] arr;
-        delete[] vertices;
-    }
-};
-
-int main() {
-    Graph<string> g(5);
-
-    g.AddVertex("A");
-    g.AddVertex("B");
-    g.AddVertex("C");
-    g.AddVertex("D");
-    g.AddVertex("E");
-
-    g.addedge("A", "B", 2);
-    g.addedge("B", "C", 3);
-    g.addedge("C", "D", 4);
-    g.addedge("D", "E", 5);
-    g.addedge("E", "A", 6);
-
-    g.DisplayGraph();
-
-    return 0;
-}
+//#include <iostream>
+//using namespace std;
+//const int maxnumber = 9999999999;
+//int tspNearestNeighbor(int graph[4][4], int startCity, int n) {
+//	bool visited[4] = { false };
+//	int route[4];
+//	
+//	int currentCity = startCity;
+//	int totalCost = 0;
+//	visited[currentCity] = true;
+//	route[0] = currentCity;
+//	for (int step = 1; step < n; ++step) {
+//		int nearestCity = -1;
+//		int minDistance = maxnumber;
+//	
+//		for (int nextCity = 0; nextCity < n; ++nextCity) {
+//			if (!visited[nextCity] && graph[currentCity][nextCity] < minDistance) {
+//				nearestCity = nextCity;
+//				minDistance = graph[currentCity][nextCity];
+//			}
+//		}
+//	
+//		if (nearestCity == -1) {
+//			cerr << "Error: Unable to find an unvisited city. Ensure the graph is connected." << endl;
+//			return-1;
+//		}
+//		
+//		visited[nearestCity] = true;
+//		route[step] = nearestCity;
+//		totalCost += minDistance;
+//		currentCity = nearestCity;
+//	}
+//	if (graph[currentCity][startCity] == maxnumber) {
+//		cerr << "Error: No path exists to return to the starting city." << endl;
+//		return-1;
+//	}
+//	totalCost += graph[currentCity][startCity];
+//	cout << "Route using Nearest Neighbor Heuristic: ";
+//	for (int i = 0; i < n; ++i) {
+//		cout << route[i] << "-> ";
+//	}
+//	cout << startCity << endl;
+//	return totalCost;
+//}
+//int main() {
+//	int graph[4][4] = {
+//	{0, 10, 15, 20},
+//	{10, 0, 35, 25},
+//	{15, 35, 0, 30},
+//	{20, 25, 30, 0}
+//	};
+//	int startCity = 0;
+//	cout << "Using Nearest Neighbor Heuristic to solve TSP..." << endl;
+//	int minCost = tspNearestNeighbor(graph, startCity, 4);
+//	if (minCost != -1) {
+//		cout << "Total cost: " << minCost << endl;
+//	}
+//	else {
+//		cerr << "Failed to calculate TSP due to errors." << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}

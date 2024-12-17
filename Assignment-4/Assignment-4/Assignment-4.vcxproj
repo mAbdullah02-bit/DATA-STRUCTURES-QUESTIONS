@@ -127,6 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ASS5-q2.cpp" />
+    <ClCompile Include="Asss-5.cpp" />
+    <ClCompile Include="JJq2.cpp" />
     <ClCompile Include="q1.cpp" />
     <ClCompile Include="q2.cpp" />
     <ClCompile Include="q2-alternative.cpp" />

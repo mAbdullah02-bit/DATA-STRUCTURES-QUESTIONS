@@ -23,10 +23,11 @@ public:
 	string username, password, city, lastlogin;
 	// Posts Stack for personal posts, messages stack for recieved messages,
 	//  followerposts stack for when friends post anything it goes here
-	Stack posts, messages,followerposts;
+	Stack requests, messages,followerposts;
+
 	// request queue for recieved requests, notification for recieved notifications
 	// inbox of eaxh user when he sends to other firend;
-	Queue requests, notifications, inbox;
+	Queue posts, notifications, inbox;
 	Node* next;
 	Node(string name, string pass, string City, string Lastlogin) //Parameterized Constructor 
 		:username(name), password(pass),city(City),lastlogin(Lastlogin),next(nullptr){}
@@ -132,7 +133,9 @@ public:
 			cout << "User do not exist.\n";
 			return;
 		}
-		Users[fromindex]->posts.push(post,from);
+		//Users[fromindex]->posts.push(post,from);
+		Users[fromindex]->posts.enque(post,from);
+		
 	}
 	void viewfollowerposts(string user) {
 		int index = getVertexIndex(user);
@@ -144,7 +147,7 @@ public:
 
 	while (temp!=nullptr)
 	{
-		temp->posts.displayposts(temp->username);
+		temp->posts.display();
 		
 		temp = temp->next;
 	}
@@ -157,7 +160,8 @@ public:
 			cout << "User do not exist.\n";
 			return;
 		}
-		Users[index]->posts.displayposts(Users[index]->username);
+		//Users[index]->posts.displayposts(Users[index]->username);
+		Users[index]->posts.display();
 	}
 	void sendfollowrequest(string from, string to) {
 		int toindex = getVertexIndex(to);
@@ -169,7 +173,7 @@ public:
 		}
 
 		
-		QNode* temp = Users[toindex]->requests.front;
+		SNode* temp = Users[toindex]->requests.gettop();
 		while (temp != nullptr) {
 			if (temp->from == from) {
 				cout << RED1 << "Follow request already sent!.." << RESET1 << endl;
@@ -180,7 +184,7 @@ public:
 
 		
 		string str = "Friend Request Received from " + from;
-		Users[toindex]->requests.enque(from, to);
+		Users[toindex]->requests.push(from, to);
 		Users[toindex]->notifications.enque(str);
 
 		cout << GREEN1 << "Follow request sent successfully.\n" << RESET1;

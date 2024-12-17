@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chrull", "chrull\chrull.vcxproj", "{DFCE16CE-E194-4792-B766-BA07A665303F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Debug|x64.ActiveCfg = Debug|x64
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Debug|x64.Build.0 = Debug|x64
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Debug|x86.ActiveCfg = Debug|Win32
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Debug|x86.Build.0 = Debug|Win32
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Release|x64.ActiveCfg = Release|x64
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Release|x64.Build.0 = Release|x64
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Release|x86.ActiveCfg = Release|Win32
+		{DFCE16CE-E194-4792-B766-BA07A665303F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0337A307-0FB8-4083-BA24-0627CCEEE62C}
+	EndGlobalSection
+EndGlobal

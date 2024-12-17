@@ -18,10 +18,9 @@ class Stack {
     SNode* top;
 
 public:
-    // Constructor
-    Stack() : top(nullptr) {}
+     Stack() : top(nullptr) {}
 
-    // Peek at the top element
+ 
     string peek() {
         if (top == nullptr) {
             cout << "Stack is empty!\n";
@@ -68,6 +67,9 @@ public:
             cout << "Post " << x << ": " << temp->data << " | From: " << temp->from << endl;
             temp = temp->next;
         }
+    }
+    SNode* gettop() {
+        return top;
     }
     Stack& operator=(const Stack& obj) {
         if (this == &obj) { 
