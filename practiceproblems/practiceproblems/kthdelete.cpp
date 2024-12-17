@@ -15,25 +15,25 @@ public:
 Node* deleteK(Node* head, int k) {
 
     Node* curr = head;
-    Node* prev = nullptr;
+    
 
-    int c = 0;
+    int c = 1;
     while (curr!=nullptr)
     {
         c++;
         if (c==k)
         {
-            Node* temp = curr;
+            Node* temp = curr->next;
             
-                prev->next = curr->next;
-                curr = curr->next;
+                curr->next = curr->next->next;
                 delete temp;
+                
                 c = 1;
         }
 
-        prev = curr;
-        if(curr!=nullptr)
         curr = curr->next;
+        
+       
 
     }
 
